@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import Layout from '../../../layouts/Layout.astro';
+import { articleMonth, articleYear, monthName, monthSlug } from '../../../lib/dates';
+import { url } from '../../../lib/paths';
+
+export async function getStaticPaths() {
+	const articles = await getCollection('articles', ({ data }) => !data.draft);
+	const combos = new Map<string, { year: number; month: number }>();
+	for (const a of articles) {
+		const year = articleYear(a.data.date);
+		const month = articleMonth(a.data.date);
+		combos.set(`${year}-${month}`, { year, month });
+	}
+	return Array.from(combos.values()).map(({ year, month }) => ({
+		params: { year: String(year), month: monthSlug(month) },
+	}));
+}
+
+const { year, month } = Astro.params;
+const monthNum = Number(month);
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+	.filter((a) => articleYear(a.data.date) === Number(year) && articleMonth(a.data.date) === monthNum)
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title={`${monthName(monthNum)} ${year}`}>
+	<div class="container">
+		<header class="archive-header">
+			<h1 class="archive-title">{monthName(monthNum)} {year}</h1>
+			<p><a href={url(`/archive/${year}/`)}>← All of {year}</a></p>
+		</header>
+		{
+			articles.length === 0 ? (
+				<p class="empty-state">No articles for this month.</p>
+			) : (
+				<ul class="article-list">
+					{articles.map((article) => <ArticleCard article={article} />)}
+				</ul>
+			)
+		}
+	</div>
+</Layout>

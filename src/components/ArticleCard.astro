@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/dates';
+import { makeExcerpt } from '../lib/excerpt';
+import { url } from '../lib/paths';
+
+interface Props {
+	article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const { title, date, image, imageAlt, excerpt, author } = article.data;
+const href = url(`/articles/${article.id}/`);
+const excerptText = makeExcerpt(article.body, excerpt);
+---
+
+<li class:list={['article-card', { 'has-image': !!image }]}>
+	{
+		image && (
+			<div class="article-card-image">
+				<a href={href} tabindex="-1" aria-hidden="true">
+					<Image src={image} alt={imageAlt ?? title} width={560} height={420} />
+				</a>
+			</div>
+		)
+	}
+	<div class="article-card-body">
+		<p class="article-card-kicker">Satire</p>
+		<h2 class="article-card-title"><a href={href}>{title}</a></h2>
+		{excerptText && <p class="article-card-excerpt">{excerptText}</p>}
+		<p class="article-card-meta">
+			{formatDate(date)}
+			{author && ` · ${author}`}
+			{' · '}<a class="read-more" href={href}>Read more →</a>
+		</p>
+	</div>
+</li>

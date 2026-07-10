@@ -1,0 +1,44 @@
+---
+import { getYearMonthNav } from '../lib/nav';
+import { monthName, monthSlug } from '../lib/dates';
+import { url } from '../lib/paths';
+import { SITE_TITLE, SITE_TAGLINE } from '../lib/site';
+
+const yearNav = await getYearMonthNav();
+---
+
+<header class="site-header">
+	<div class="container masthead">
+		<div>
+			<p class="masthead-title"><a href={url('/')}>{SITE_TITLE}</a></p>
+			<p class="masthead-tagline">{SITE_TAGLINE}</p>
+		</div>
+	</div>
+	<nav class="site-nav" aria-label="Primary">
+		<div class="container">
+			<ul class="nav-list">
+				{
+					yearNav.map((y) => (
+						<li class="nav-item">
+							<a class="nav-link year-summary" href={url(`/archive/${y.year}/`)}>
+								{y.year}
+							</a>
+							<ul class="month-list">
+								<li class="all-year">
+									<a href={url(`/archive/${y.year}/`)}>All {y.year}</a>
+								</li>
+								{y.months.map((m) => (
+									<li>
+										<a href={url(`/archive/${y.year}/${monthSlug(m)}/`)}>{monthName(m)}</a>
+									</li>
+								))}
+							</ul>
+						</li>
+					))
+				}
+				<li class="nav-item"><a class="nav-link" href={url('/about/')}>About</a></li>
+				<li class="nav-item"><a class="nav-link" href={url('/suggestions/')}>Suggestions</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>

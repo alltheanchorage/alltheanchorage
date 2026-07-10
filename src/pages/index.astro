@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../components/ArticleCard.astro';
+import Layout from '../layouts/Layout.astro';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Layout title="Home">
+	<div class="container">
+		{
+			articles.length === 0 ? (
+				<p class="empty-state">No articles published yet. Check back soon.</p>
+			) : (
+				<ul class="article-list">
+					{articles.map((article) => (
+						<ArticleCard article={article} />
+					))}
+				</ul>
+			)
+		}
+	</div>
+</Layout>

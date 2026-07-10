@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { formatDate } from '../../lib/dates';
+
+export async function getStaticPaths() {
+	const articles = await getCollection('articles', ({ data }) => !data.draft);
+	return articles.map((article) => ({
+		params: { slug: article.id },
+		props: { article },
+	}));
+}
+
+const { article } = Astro.props;
+const { title, date, image, imageAlt, imageCaption, author, excerpt } = article.data;
+const { Content } = await render(article);
+---
+
+<Layout title={title} description={excerpt}>
+	<article class="container">
+		<header class="article-header">
+			<h1 class="article-title">{title}</h1>
+			<p class="article-meta">
+				{formatDate(date)}
+				{author && ` · ${author}`}
+			</p>
+		</header>
+		{
+			image && (
+				<figure class="article-figure">
+					<Image src={image} alt={imageAlt ?? title} width={1200} height={800} />
+					{imageCaption && <figcaption>{imageCaption}</figcaption>}
+				</figure>
+			)
+		}
+		<div class="article-body">
+			<Content />
+		</div>
+	</article>
+</Layout>

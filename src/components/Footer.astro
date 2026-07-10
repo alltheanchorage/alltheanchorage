@@ -1,0 +1,11 @@
+---
+import { url } from '../lib/paths';
+import { SITE_TITLE } from '../lib/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer container">
+	<p>&copy; {year} {SITE_TITLE}. Satire — none of this is real news.</p>
+	<p><a href={url('/suggestions/')}>Suggestions</a> · <a href={url('/about/')}>About</a></p>
+</footer>
