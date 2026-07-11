@@ -78,7 +78,7 @@ to GitHub Pages on every push to `main`. One-time setup in the repo on GitHub:
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
 
 After that, pushing to `main` publishes automatically at
-`https://alltheanchorage.github.io/alltheanchorage-web/`.
+`https://alltheanchorage.github.io/alltheanchorage/`.
 
 If you later move to a custom domain or rename the repo to `alltheanchorage.github.io`,
 update `site` and `base` in `astro.config.mjs` to match (see the comment there).
