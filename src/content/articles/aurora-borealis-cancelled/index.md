@@ -1,6 +1,7 @@
 ---
 title: "Aurora Borealis Cancelled Until Further Notice, Alaska Sky Department Announces"
 date: 2025-12-10
+category: Science
 image: ./cover.svg
 imageAlt: "Illustration of a green and teal aurora over a dark mountain skyline, with a red 'cancelled' banner across it"
 imageCaption: "The Northern Lights, pictured here in one of their final scheduled appearances."

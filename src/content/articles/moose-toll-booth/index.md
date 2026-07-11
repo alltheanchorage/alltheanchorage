@@ -1,6 +1,7 @@
 ---
 title: "City Council Approves Toll Booth for Moose Using Crosswalks Correctly"
 date: 2026-01-20
+category: Local
 excerpt: "Officials say local moose have gotten 'suspiciously good' at looking both ways, and it's time they paid for the privilege."
 image: ./cover.svg
 imageAlt: "Illustration of a moose beside a toll booth on a foggy road"

@@ -29,6 +29,7 @@ src/content/articles/moose-toll-booth/
 | :------------- | :------- | :--------------------------------------------------------------------|
 | `title`        | yes      | The headline.                                                        |
 | `date`         | yes      | `YYYY-MM-DD`. Controls sort order and which Year/Month nav tab it's under. |
+| `category`     | no       | Section tag shown above the headline, e.g. `Science` or `Business`. Defaults to `Satire`. |
 | `excerpt`      | no       | Teaser shown on the home page and archive pages. If omitted, one is auto-generated from the start of the body. |
 | `image`        | no       | Path to an image file next to this `index.md`, e.g. `./cover.jpg`.   |
 | `imageAlt`     | no       | Alt text for the image. Falls back to the title.                    |

@@ -13,13 +13,14 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, imageCaption, author, excerpt } = article.data;
+const { title, date, image, imageAlt, imageCaption, author, excerpt, category } = article.data;
 const { Content } = await render(article);
 ---
 
 <Layout title={title} description={excerpt}>
 	<article class="container">
 		<header class="article-header">
+			<p class="article-card-kicker">{category}</p>
 			<h1 class="article-title">{title}</h1>
 			<p class="article-meta">
 				{formatDate(date)}

@@ -1,6 +1,7 @@
 ---
 title: "Mayor Declares Downtown Anchorage a Sovereign Nation, Citing 'Parking Grievances'"
 date: 2026-01-05
+category: Politics
 image: ./cover.svg
 imageAlt: "Illustration of a small flag on a podium against a dusk mountain skyline"
 imageCaption: "The newly unveiled flag of the Sovereign Nation of Fourth Avenue."

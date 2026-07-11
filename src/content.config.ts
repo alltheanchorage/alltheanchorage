@@ -17,6 +17,8 @@ const articles = defineCollection({
 		z.object({
 			// Headline shown on the home page, archive pages, and the article page.
 			title: z.string(),
+			// Section tag shown above the headline, e.g. "Science" or "Business".
+			category: z.string().default('Satire'),
 			// Publication date. Drives sort order and which Year/Month nav tab the article appears under.
 			date: z.date(),
 			// Short teaser shown on the home page and archive pages. Falls back to the

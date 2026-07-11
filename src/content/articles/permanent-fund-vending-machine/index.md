@@ -1,6 +1,7 @@
 ---
 title: "State Replaces Permanent Fund Dividend Checks With Single Vending Machine in Juneau"
 date: 2025-11-02
+category: Business
 excerpt: "Every Alaskan is technically eligible. Getting there is, per state officials, 'your problem now.'"
 author: Capitol Bureau
 ---
