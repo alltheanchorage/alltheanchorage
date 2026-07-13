@@ -4,6 +4,7 @@ import ArticleCard from '../../../components/ArticleCard.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { articleMonth, articleYear, monthName, monthSlug } from '../../../lib/dates';
 import { url } from '../../../lib/paths';
+import { sortArticlesForDisplay } from '../../../lib/sortArticles';
 
 export async function getStaticPaths() {
 	const articles = await getCollection('articles', ({ data }) => !data.draft);
@@ -12,9 +13,11 @@ export async function getStaticPaths() {
 }
 
 const { year } = Astro.params;
-const articles = (await getCollection('articles', ({ data }) => !data.draft))
-	.filter((a) => articleYear(a.data.date) === Number(year))
-	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const articles = sortArticlesForDisplay(
+	(await getCollection('articles', ({ data }) => !data.draft)).filter(
+		(a) => articleYear(a.data.date) === Number(year),
+	),
+);
 
 const months = Array.from(new Set(articles.map((a) => articleMonth(a.data.date)))).sort((a, b) => b - a);
 ---
