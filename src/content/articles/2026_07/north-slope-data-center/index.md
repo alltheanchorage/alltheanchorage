@@ -2,7 +2,7 @@
 title: 'Proposed North Slope Data Center Would Generate Enough Electricity To Give Every Caribou A Heated Blanket'
 date: 2026-07-11
 category: Energy
-image: ./cover.png
+image: ./cover.jpeg
 imageAlt: 'A tabby cat nestled up against a blanket on a couch.'
 imageCaption: "A cat nestled up against a heated blanket, proof that caribou would like them, too."
 author: Resource Desk
