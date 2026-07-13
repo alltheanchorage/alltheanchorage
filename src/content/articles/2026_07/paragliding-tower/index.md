@@ -6,7 +6,7 @@ image: ./cover.png
 imageAlt: "Man in spacesuit beginning free-fall back to Earth."
 imageCaption: "An Anchorage paraglider seen above Kincaid Park."
 author: Staff Writer
-order: "90"
+order: 90
 ---
 
 An update to the Kincaid Park Master Plan includes designs for new restrooms, bike trail connections, and a 1000-foot tall paragliding tower. “Based on public comment, we feel that a 1000-foot tall paragliding tower will really serve the community,” stated a municipality official in a press release. “We heard from runners, bikers, skiers, roller-skiers, disc-golfers, foragers, birders, motorcrossers, even some tourists, and we decided that this tower is the project that will meet the needs of the most groups at once.”

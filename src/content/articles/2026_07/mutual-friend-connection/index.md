@@ -6,7 +6,7 @@ image: ./cover.png
 imageAlt: "The Coastal Trail and the Ship Creek Trail side-by-side with a heart in the middle."
 imageCaption: "The Coastal Trail has been eyeing the Ship Creek Trail for a while."
 author: Staff Writer
-order: "70"
+order: 70
 ---
 
 The Municipality of Anchorage reports that the Tony Knowles Coastal Trail and the Ship Creek Trail will soon be connected by a mutual friend. “We’re very excited that these two trails will finally be able to meet one another,” said Mayor Suzanne LaFrance during a press conference. “They’ve been circling each other for a while, and we’ve always thought that they would be a good match, but they’ve never had an opportunity to meet until now when they’ll be brought together by a shared acquaintance.”

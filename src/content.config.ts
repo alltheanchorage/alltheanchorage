@@ -46,7 +46,7 @@ const articles = defineCollection({
 			// Breaks ties among articles in the same year+month — higher numbers sort
 			// higher on the page. Has no effect across different months (chronological
 			// month grouping always wins). Ties fall back to date, then id.
-			order: z.number().default(0),
+			order: z.coerce.number().default(0),
 		}),
 });
 
