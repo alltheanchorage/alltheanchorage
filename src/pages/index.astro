@@ -4,10 +4,9 @@ import ArticleCard from '../components/ArticleCard.astro';
 import FeaturedArticle from '../components/FeaturedArticle.astro';
 import Layout from '../layouts/Layout.astro';
 import { articleMonth, articleYear } from '../lib/dates';
+import { sortArticlesForDisplay } from '../lib/sortArticles';
 
-const allArticles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const allArticles = sortArticlesForDisplay(await getCollection('articles', ({ data }) => !data.draft));
 
 // Home page only shows the most recent year/month that has any published
 // articles; archive pages still show everything for their period.
@@ -20,8 +19,8 @@ const articles = mostRecent
 		)
 	: [];
 
-// `articles` is already sorted newest-first, so if more than one is marked
-// `main`, `.find()` naturally picks the most recent one.
+// `articles` is already sorted (main, then order, then date), so if more
+// than one is marked `main`, `.find()` naturally picks the top-priority one.
 const featured = articles.find((article) => article.data.main);
 const rest = featured ? articles.filter((article) => article !== featured) : articles;
 ---

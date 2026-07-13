@@ -5,12 +5,18 @@ const articles = defineCollection({
 	loader: glob({
 		pattern: '**/*.md',
 		base: './src/content/articles',
-		// Each article lives in its own folder (e.g. articles/some-headline/index.md,
-		// with any image alongside it). Use the folder name as the slug instead of
-		// appending "/index".
+		// Each article lives in its own folder (e.g.
+		// articles/2026_07/some-headline/index.md, grouped by year_month purely
+		// for author-side tidiness, with any image alongside it). The id/slug is
+		// just the article's own folder name — the year_month grouping folder is
+		// never part of the public URL.
 		generateId: ({ entry }) => {
 			const withoutExt = entry.replace(/\.md$/, '');
-			return withoutExt.endsWith('/index') ? withoutExt.slice(0, -'/index'.length) : withoutExt;
+			const withoutIndex = withoutExt.endsWith('/index')
+				? withoutExt.slice(0, -'/index'.length)
+				: withoutExt;
+			const segments = withoutIndex.split('/');
+			return segments[segments.length - 1];
 		},
 	}),
 	schema: ({ image }) =>
@@ -34,8 +40,13 @@ const articles = defineCollection({
 			draft: z.boolean().default(false),
 			// Feature this article in the centered hero slot on the home page, for
 			// whichever month it belongs to. If more than one article in the same
-			// month is marked main, only the most recent one is featured.
+			// month is marked main, the one with the highest `order` (then most
+			// recent date) is featured; the rest render as normal cards.
 			main: z.boolean().default(false),
+			// Breaks ties among articles in the same year+month — higher numbers sort
+			// higher on the page. Has no effect across different months (chronological
+			// month grouping always wins). Ties fall back to date, then id.
+			order: z.number().default(0),
 		}),
 });
 
