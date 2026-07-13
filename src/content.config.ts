@@ -32,6 +32,10 @@ const articles = defineCollection({
 			author: z.string().optional(),
 			// Set true to keep working on an article without publishing it.
 			draft: z.boolean().default(false),
+			// Feature this article in the centered hero slot on the home page, for
+			// whichever month it belongs to. If more than one article in the same
+			// month is marked main, only the most recent one is featured.
+			main: z.boolean().default(false),
 		}),
 });
 

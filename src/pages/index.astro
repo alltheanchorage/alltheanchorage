@@ -1,11 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
+import FeaturedArticle from '../components/FeaturedArticle.astro';
 import Layout from '../layouts/Layout.astro';
+import { articleMonth, articleYear } from '../lib/dates';
 
-const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+const allArticles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+
+// Home page only shows the most recent year/month that has any published
+// articles; archive pages still show everything for their period.
+const mostRecent = allArticles[0];
+const articles = mostRecent
+	? allArticles.filter(
+			(article) =>
+				articleYear(article.data.date) === articleYear(mostRecent.data.date) &&
+				articleMonth(article.data.date) === articleMonth(mostRecent.data.date),
+		)
+	: [];
+
+// `articles` is already sorted newest-first, so if more than one is marked
+// `main`, `.find()` naturally picks the most recent one.
+const featured = articles.find((article) => article.data.main);
+const rest = featured ? articles.filter((article) => article !== featured) : articles;
 ---
 
 <Layout title="Home">
@@ -14,11 +32,14 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft)).so
 			articles.length === 0 ? (
 				<p class="empty-state">No articles published yet. Check back soon.</p>
 			) : (
-				<ul class="article-list">
-					{articles.map((article) => (
-						<ArticleCard article={article} />
-					))}
-				</ul>
+				<>
+					{featured && <FeaturedArticle article={featured} />}
+					<ul class="article-list">
+						{rest.map((article) => (
+							<ArticleCard article={article} />
+						))}
+					</ul>
+				</>
 			)
 		}
 	</div>
