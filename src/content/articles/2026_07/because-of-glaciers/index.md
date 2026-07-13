@@ -6,7 +6,7 @@ image: ./cover.png
 imageAlt: 'Spencer Glacier in Alaska with text asking the question "why", the answer being the pictured glacier.'
 imageCaption: "Glaciers are usually the answer."
 author: Ada V. Ice
-order: "80"
+order: 80
 ---
 
 Here’s some Alaskan advice. If you’re ever unsure about the reason for something being the way that it is in Alaska, just say ‘because of glaciers’. Not sure why that mountain looks the way it does? “Because of glaciers” sums it up. Does a visiting friend ask how a certain rock got there? “Because of glaciers” is sure to impress. Overhear a tourist wondering why that stream has that particular quality? “Because of glaciers” will make them think you’re a world-renowned Earth scientist. When in doubt, glaciers are the reason!

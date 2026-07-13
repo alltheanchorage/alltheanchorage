@@ -3,7 +3,7 @@ title: "POINT: The Basher Trailhead Parking Lot Is Perfect Just The Way It Is / 
 date: 2026-07-11
 category: Local Opinion
 author: Local Resident / Your Car
-order: "60"
+order: 60
 ---
 
 **POINT: The Basher Trailhead parking lot is perfect just the way it is**
