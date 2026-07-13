@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/dates';
+import { url } from '../lib/paths';
+
+interface Props {
+	article: CollectionEntry<'articles'>;
+}
+
+const { article } = Astro.props;
+const { title, date, image, imageAlt, author, category } = article.data;
+const href = url(`/articles/${article.id}/`);
+---
+
+<div class="featured-article">
+	<h2 class="featured-article-title"><a href={href}>{title}</a></h2>
+	{
+		image && (
+			<div class="featured-article-image">
+				<a href={href} tabindex="-1" aria-hidden="true">
+					<Image src={image} alt={imageAlt ?? title} width={1000} height={667} />
+				</a>
+			</div>
+		)
+	}
+	<p class="article-card-kicker">{category}</p>
+	<p class="article-card-meta">
+		{formatDate(date)}
+		{author && ` · ${author}`}
+		{' · '}<a class="read-more" href={href}>Read more →</a>
+	</p>
+</div>
