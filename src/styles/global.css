@@ -7,7 +7,7 @@
 	--color-masthead: #0b1622;
 	--color-masthead-text: #f7f5f0;
 	--color-masthead-muted: #9fb0bf;
-	--color-accent: #1f8f82;
+	--color-accent: #fcad03;
 	--color-accent-strong: #e0483f;
 
 	--font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -29,7 +29,7 @@
 		--color-masthead: #05090d;
 		--color-masthead-text: #f2efe8;
 		--color-masthead-muted: #7c8b98;
-		--color-accent: #43c7b6;
+		--color-accent: #fcad03;
 		--color-accent-strong: #ff6b60;
 		--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
 		--shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
