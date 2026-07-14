@@ -12,4 +12,4 @@ Do we really need an expanded parking lot at the Basher Trailhead? I have lived 
 
 **COUNTERPOINT: Thunk-thunk, ka-chunk, clatter-clatter-bang!**
 
-Thunk-thunk, ka-chunk, clatter-clatter-bang! Whomp whomp, kaboom! Thud. Thud. Thud. Whoomph. Thud. Badoink! Clonk, clank, ka-blooey! Thud. Hissssssssss.
+Thunk-thunk, ka-chunk, clatter-clatter-bang! Whomp whomp, kaboom! Thud. Thud. Thud. Whoomph. Thud. Badoink! Clonk, clank, ka-blooey! Hissssssssss.

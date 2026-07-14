@@ -1,5 +1,5 @@
 /** Falls back to a plain-text teaser sliced from the article body when no explicit excerpt is set. */
-export function makeExcerpt(body: string | undefined, explicit: string | undefined, maxLen = 260): string {
+export function makeExcerpt(body: string | undefined, explicit: string | undefined, maxLen = 270): string {
 	if (explicit) return explicit;
 	if (!body) return '';
 

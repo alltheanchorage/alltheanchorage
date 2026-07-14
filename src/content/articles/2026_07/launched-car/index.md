@@ -5,7 +5,7 @@ category: Alaskan Events
 image: ./cover.png
 imageAlt: 'A small gray car flying in the clouds above faraway mountains. '
 imageCaption: 'The launched car failed to appreciate the gravity of the situation.'
-author: Event Reporter
+author: Staff Writer
 order: 65
 ---
 
