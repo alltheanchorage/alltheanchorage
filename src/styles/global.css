@@ -380,6 +380,22 @@ img {
 	font-size: 1.1rem;
 }
 
+.highlight {
+	color: var(--color-accent);
+}
+
+.form-embed {
+	margin-top: 1rem;
+}
+
+.form-embed iframe {
+	width: 100%;
+	max-width: 640px;
+	border: none;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+}
+
 /* ---------- Archive index ---------- */
 
 .archive-header {
