@@ -4,6 +4,7 @@ date: 2026-07-11
 category: Opinion
 author: Local Resident / Your Car
 order: 60
+draft: true
 ---
 
 **POINT: The Basher Trailhead parking lot is perfect just the way it is**
