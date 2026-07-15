@@ -1,7 +1,7 @@
 ---
 title: 'Knights And Maidens Spotted Wandering Around Russian Jack Weeks After Renaissance Fair'
 date: 2026-07-11
-category: Local Events
+category: Local
 author: Staff Writer
 order: 82
 ---

@@ -3,8 +3,8 @@ title: "Kincaid Park Master Plan Update Includes New Restrooms, Trails, 1,000-Fo
 date: 2026-07-11
 category: Planning
 image: ./cover.png
-imageAlt: "Man in spacesuit beginning free-fall back to Earth."
-imageCaption: "An Anchorage paraglider seen above Kincaid Park."
+imageAlt: "Power line tower from below"
+imageCaption: "Initial construction has begun."
 author: Staff Writer
 order: 90
 ---
