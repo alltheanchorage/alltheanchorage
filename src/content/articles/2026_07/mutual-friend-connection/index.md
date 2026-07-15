@@ -2,9 +2,6 @@
 title: "Coastal Trail and Ship Creek Trail To Be Connected By Mutual Friend"
 date: 2026-07-11
 category: Planning
-image: ./cover.png
-imageAlt: "The Coastal Trail and the Ship Creek Trail side-by-side with a heart in the middle."
-imageCaption: "The Coastal Trail has been eyeing the Ship Creek Trail for a while."
 author: Staff Writer
 order: 70
 ---

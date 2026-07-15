@@ -1,7 +1,7 @@
 ---
 title: 'Advice: If Unsure About Reason For Something In Alaska, Just Say "Because Of Glaciers"'
 date: 2026-07-11
-category: Alaskan Advice
+category: Advice
 image: ./cover.png
 imageAlt: 'Spencer Glacier in Alaska with text asking the question "why", the answer being the pictured glacier.'
 imageCaption: "Glaciers are usually the answer."

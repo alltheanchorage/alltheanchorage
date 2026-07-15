@@ -1,7 +1,7 @@
 ---
 title: "POINT: The Basher Trailhead Parking Lot Is Perfect Just The Way It Is / COUNTERPOINT: Thunk-Thunk, Ka-Chunk, Clatter-Clatter-Bang!"
 date: 2026-07-11
-category: Local Opinion
+category: Opinion
 author: Local Resident / Your Car
 order: 60
 ---
