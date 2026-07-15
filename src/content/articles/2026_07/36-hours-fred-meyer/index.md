@@ -2,7 +2,7 @@
 title: '36 Hours Inside Fred Meyer On Northern Lights'
 date: 2026-07-11
 category: Travel
-author: Fredrick 
+author: Bob
 order: 50
 ---
 
