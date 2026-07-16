@@ -3,6 +3,9 @@ title: '36 Hours Inside Fred Meyer On Northern Lights'
 date: 2026-07-11
 category: Travel
 author: Bob
+image: ./cover.png
+imageAlt: 'A glowing red Fred Meyer sign with snow falling in the foreground.'
+imageCaption: 'Winter is the best time to visit.'
 order: 50
 ---
 

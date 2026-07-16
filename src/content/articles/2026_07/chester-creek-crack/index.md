@@ -1,5 +1,5 @@
 ---
-title: "Crack In Chester Creek Trail Near Westchester Lagoon Swallow Biker Whole"
+title: "Crack In Chester Creek Trail Near Westchester Lagoon Swallows Biker Whole"
 date: 2026-07-11
 category: Recreation
 author: Staff Writer
