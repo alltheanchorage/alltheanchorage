@@ -1,6 +1,6 @@
 ---
 title: "In Effort To Differentiate Himself From Petersburg Challenger, Incumbent Dan Sullivan Changes Name To 'Daenerys'"
-date: 2026-07-11
+date: 2026-07-16
 category: Politics
 image: ./cover.png
 imageAlt: "Daenerys Targaryen standing next to baby dragon with Dan Sullivan's face cropped on."

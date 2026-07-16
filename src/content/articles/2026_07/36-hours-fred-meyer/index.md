@@ -1,6 +1,6 @@
 ---
 title: '36 Hours Inside Fred Meyer On Northern Lights'
-date: 2026-07-11
+date: 2026-07-16
 category: Travel
 author: Bob
 image: ./cover.png
@@ -17,6 +17,6 @@ The produce aisle: you’ll experience Alaska’s wide variety of imports, which
 
 **Lodging**
 
-As the overhead fluorescent lights begin to dim and the $5 bottle of wine sets in, head to the furniture section for a cozy selection of beds, couches, and ottomans. This whole back section of the store is locally dubbed the ‘liminal space experience’ for the spectre-like employees floating through the aisles and the hidden jewelry store that might be a portal to a doppelgänger dimension. If you came with a partner and are looking to get frisky, be sure to awkwardly stand next to the condoms as an employee comes and unlocks the case.
+As the overhead fluorescent lights begin to dim and the $5 bottle of wine sets in, head to the furniture section for a cozy selection of beds, couches, and ottomans. This whole back section of the store is locally dubbed the ‘liminal space experience’ for the spectre-like employees floating around throughout the aisles and the hidden jewelry store that might be a portal to a doppelgänger dimension. If you came with a partner and are looking to get frisky, be sure to awkwardly stand next to the condoms as an employee comes and unlocks the case.
 
 Alas, at some point your trip inside Fred Meyer must come to an end. You better be sure you saved your receipt.

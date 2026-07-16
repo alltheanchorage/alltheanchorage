@@ -75,6 +75,14 @@ via the top nav and at `/archive/<year>/` and `/archive/<year>/<month>/`.
 The **About** and **Suggestions** pages are `src/pages/about.astro` and
 `src/pages/suggestions.astro` — edit the placeholder text in each whenever you're ready.
 
+## Newsletter
+
+The About page embeds a signup form (`src/components/NewsletterForm.astro`) that posts
+to the `alltheanchorage` account on [Buttondown](https://buttondown.com). New
+subscribers, the welcome email they get, and sending future newsletter issues are all
+managed entirely from Buttondown's own dashboard — nothing in this repo needs to change
+to send an issue.
+
 ## Design
 
 Shared layout, header/footer, and page styles live in `src/layouts/Layout.astro`,
