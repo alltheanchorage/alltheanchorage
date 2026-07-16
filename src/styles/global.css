@@ -396,6 +396,48 @@ img {
 	box-shadow: var(--shadow-sm);
 }
 
+.newsletter-form {
+	margin-top: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.newsletter-form label {
+	flex-basis: 100%;
+	font-weight: 600;
+}
+
+.newsletter-form input[type='email'] {
+	font: inherit;
+	padding: 0.6rem 0.9rem;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	background: var(--color-bg-elevated);
+	color: var(--color-text);
+	min-width: 0;
+	flex: 1 1 240px;
+}
+
+.newsletter-form input[type='submit'] {
+	font: inherit;
+	font-weight: 700;
+	padding: 0.6rem 1.25rem;
+	border: none;
+	border-radius: var(--radius);
+	background: var(--color-accent);
+	color: var(--color-masthead);
+	cursor: pointer;
+}
+
+.newsletter-form-credit {
+	flex-basis: 100%;
+	margin: 0;
+	font-size: 0.8rem;
+	color: var(--color-text-muted);
+}
+
 /* ---------- Archive index ---------- */
 
 .archive-header {

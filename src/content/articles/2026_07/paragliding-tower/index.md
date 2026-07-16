@@ -1,6 +1,6 @@
 ---
 title: "Kincaid Park Master Plan Update Includes New Restrooms, Trails, 1,000-Foot Paragliding Tower"
-date: 2026-07-11
+date: 2026-07-16
 category: Planning
 image: ./cover.png
 imageAlt: "Hill with trees and grass and blue sky in the background."

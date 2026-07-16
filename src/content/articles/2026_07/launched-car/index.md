@@ -1,6 +1,6 @@
 ---
 title: 'Launched Car Keeps Going'
-date: 2026-07-11
+date: 2026-07-16
 category: Events
 image: ./cover.png
 imageAlt: 'A small gray car flying in the clouds above faraway mountains. '
