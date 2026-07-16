@@ -3,8 +3,8 @@ title: "Kincaid Park Master Plan Update Includes New Restrooms, Trails, 1,000-Fo
 date: 2026-07-11
 category: Planning
 image: ./cover.png
-imageAlt: "Power line tower from below"
-imageCaption: "Initial construction has begun."
+imageAlt: "Hill with trees and grass and blue sky in the background."
+imageCaption: "The proposed site of the 1000-foot tower."
 author: Staff Writer
 order: 90
 ---
