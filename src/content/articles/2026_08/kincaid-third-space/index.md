@@ -1,5 +1,5 @@
 ---
-title: "Kincaid Parking Lot Acts As Community Third Space After Gates Are Locked At 9pm (by Guest)"
+title: "Kincaid Parking Lot Acts As Community Third Space After Gates Are Locked At 9pm"
 date: 2026-08-07
 category: Parks
 author: Guest Author!
