@@ -30,7 +30,7 @@ const { Content } = await render(article);
 		{
 			image && (
 				<figure class="article-figure">
-					<Image src={image} alt={imageAlt ?? title} width={1200} height={800} />
+					<Image src={image} alt={imageAlt ?? title} width={1200} />
 					{imageCaption && <figcaption>{imageCaption}</figcaption>}
 				</figure>
 			)
