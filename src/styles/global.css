@@ -342,7 +342,7 @@ img {
 }
 
 .article-figure img {
-	width: 75%;
+	width: 55%;
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-md);
 }
