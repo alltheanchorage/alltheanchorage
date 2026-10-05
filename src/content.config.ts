@@ -39,15 +39,18 @@ const articles = defineCollection({
 			author: z.string().optional(),
 			// Set true to keep working on an article without publishing it.
 			draft: z.boolean().default(false),
-			// Feature this article in the centered hero slot on the home page, for
-			// whichever month it belongs to. If more than one article in the same
-			// month is marked main, the one with the highest `order` (then most
-			// recent date) is featured; the rest render as normal cards.
+			// Feature this article in the centered hero layout on the home page, for
+			// whichever month it belongs to. Multiple articles can be marked main;
+			// they're stacked in `order` (then date) order above the normal cards.
 			main: z.boolean().default(false),
 			// Breaks ties among articles in the same year+month — higher numbers sort
 			// higher on the page. Has no effect across different months (chronological
 			// month grouping always wins). Ties fall back to date, then id.
 			order: z.coerce.number().default(0),
+			// Set true to swap the gold highlight color for pink on this article.
+			advice: z.boolean().default(false),
+			// Set true to add an outside-contributor note at the bottom of the article.
+			guest: z.boolean().default(false),
 		}),
 });
 

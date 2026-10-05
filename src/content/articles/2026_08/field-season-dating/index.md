@@ -7,6 +7,8 @@ image: ./cover.png
 imageAlt: 'People with hard hats and backpacks walking in a field, with a cartoon broken heart in the air.'
 imageCaption: 'Yukon do this!'
 order: 8
+advice: true
+guest: true
 ---
 
 **Calling Nome for Advice**

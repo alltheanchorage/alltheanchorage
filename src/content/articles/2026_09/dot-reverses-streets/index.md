@@ -7,6 +7,7 @@ image: ./cover.png
 imageAlt: Two identical traffic scenes, one mirrored on top of the other.
 imageCaption: The Seward Highway is next.
 order: 50
+guest: true
 ---
 
 The Alaska Department of Transportation (D.O.T.) announced on Facebook that the directions of Northern Lights and Benson Boulevard, both one way streets, have been reversed. 

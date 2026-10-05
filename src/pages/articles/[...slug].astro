@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { formatDate } from '../../lib/dates';
+import { url } from '../../lib/paths';
 
 export async function getStaticPaths() {
 	const articles = await getCollection('articles', ({ data }) => !data.draft);
@@ -13,12 +14,12 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, imageCaption, author, excerpt, category } = article.data;
+const { title, date, image, imageAlt, imageCaption, author, excerpt, category, advice, guest } = article.data;
 const { Content } = await render(article);
 ---
 
 <Layout title={title} description={excerpt}>
-	<article class="container">
+	<article class:list={['container', 'article-page', { advice }]}>
 		<header class="article-header">
 			<p class="article-card-kicker">{category}</p>
 			<h1 class="article-title">{title}</h1>
@@ -37,6 +38,15 @@ const { Content } = await render(article);
 		}
 		<div class="article-body">
 			<Content />
+			{
+				guest && (
+					<p class="guest-note">
+						<a href={url('/suggestions/')}>
+							This article was submitted to All The Anchorage by an outside contributor!
+						</a>
+					</p>
+				)
+			}
 		</div>
 	</article>
 </Layout>

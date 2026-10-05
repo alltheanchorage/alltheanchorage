@@ -7,6 +7,7 @@ image: ./cover.png
 imageAlt: A black bear raising his paw behind a white picket fence.
 imageCaption: The bears also dislike the look of the wind turbines on Fire Island.
 order: 40
+guest: true
 ---
 
 Recent updates from the municipal housing initiative have sparked a whole new meaning of ‘Not In My Backyard’ (NIMBY), this time coming from Anchorage’s black bear population. This wildlife species (Ursus americanus) has rallied together to voice complaints about new housing planned in the Anchorage Bowl - notably in neighborhoods and areas adjacent to Chugach State Park and other wooded recreational sites. The initiative, which calls for higher density housing and transit-oriented development, has aroused black bears who are looking to limit the city’s sprawl out of political hibernation.

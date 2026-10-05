@@ -9,11 +9,11 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, author, category } = article.data;
+const { title, date, image, imageAlt, author, category, advice } = article.data;
 const href = url(`/articles/${article.id}/`);
 ---
 
-<div class="featured-article">
+<div class:list={['featured-article', { advice }]}>
 	<h2 class="featured-article-title"><a href={href}>{title}</a></h2>
 	{
 		image && (
