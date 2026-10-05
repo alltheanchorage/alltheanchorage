@@ -32,8 +32,9 @@ const articles = defineCollection({
 			excerpt: z.string().optional(),
 			// Optional lead image, resolved relative to this article's file.
 			image: image().optional(),
-			imageAlt: z.string().optional(),
-			imageCaption: z.string().optional(),
+			// Alt text and caption may be left blank (null) in frontmatter.
+			imageAlt: z.string().nullish(),
+			imageCaption: z.string().nullish(),
 			// Byline, e.g. "Staff Writer" or a fictional reporter name.
 			author: z.string().optional(),
 			// Set true to keep working on an article without publishing it.
