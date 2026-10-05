@@ -68,4 +68,17 @@ const yearNav = await getYearMonthNav();
 			localStorage.setItem('theme', next);
 		} catch {}
 	});
+
+	// Hide the mobile nav's right-edge fade once there's nothing left to scroll.
+	const nav = document.querySelector('.site-nav');
+	const navList = document.querySelector('.nav-list');
+	if (nav && navList) {
+		const updateFade = () => {
+			const atEnd = navList.scrollLeft + navList.clientWidth >= navList.scrollWidth - 2;
+			nav.classList.toggle('nav-at-end', atEnd);
+		};
+		navList.addEventListener('scroll', updateFade, { passive: true });
+		window.addEventListener('resize', updateFade);
+		updateFade();
+	}
 </script>
