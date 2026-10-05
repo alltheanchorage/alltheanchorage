@@ -5,7 +5,7 @@ category: Politics
 image: ./cover.png
 imageAlt: "Daenerys Targaryen standing next to baby dragon with Dan Sullivan's face cropped on."
 imageCaption: "Senator Dan Sullivan even adopted a baby dragon to make the name change more convincing."
-author: Political Correspondent
+author: Mooooose
 main: true
 ---
 

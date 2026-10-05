@@ -2,7 +2,7 @@
 title: 'Turnagain Arm Belugas Boycott Alaska Railroad By Refusing To Show Their Cutesy-Wutesy Little Faces'
 date: 2026-08-07
 category: Wildlife
-author: Staff Writer
+author: Dr. Bell Uga
 image: ./cover.png
 imageAlt: 'Cartoon beluga whales holding protest signs with fish on them and a train in the background.'
 imageCaption: "Aren't you just the cutest most adorable marine mammal in the whole wide world?"

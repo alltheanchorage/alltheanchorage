@@ -2,7 +2,7 @@
 title: "Coastal Trail and Ship Creek Trail To Be Connected By Mutual Friend"
 date: 2026-07-16
 category: Planning
-author: Staff Writer
+author: Steve Marten
 order: 70
 ---
 

@@ -5,7 +5,7 @@ category: Planning
 image: ./cover.png
 imageAlt: "Hill with trees and grass and blue sky in the background."
 imageCaption: "The proposed site of the 1000-foot tower."
-author: Staff Writer
+author: Steve Marten
 order: 90
 ---
 

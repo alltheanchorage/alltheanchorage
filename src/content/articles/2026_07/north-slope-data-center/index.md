@@ -5,7 +5,7 @@ category: Energy
 image: ./cover.jpeg
 imageAlt: 'A tabby cat nestled up against a blanket on a couch.'
 imageCaption: "A cat nestled up against a heated blanket, proof that caribou would like them, too."
-author: Resource Desk
+author: Mooooose
 order: 85
 ---
 
