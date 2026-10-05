@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Deployed via GitHub Pages as a project site (github.com/alltheanchorage/alltheanchorage).
-// If you switch to a custom domain or a <user>.github.io repo, change `site` and set `base` to '/'.
+// Deployed via GitHub Pages (github.com/alltheanchorage/alltheanchorage) on the
+// custom domain alltheanchorage.com, set in the repo's Settings → Pages.
 export default defineConfig({
-	site: 'https://alltheanchorage.github.io',
-	base: '/alltheanchorage',
+	site: 'https://alltheanchorage.com',
+	base: '/',
 });
