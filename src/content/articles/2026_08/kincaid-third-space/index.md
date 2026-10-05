@@ -2,7 +2,7 @@
 title: "Kincaid Parking Lot Acts As Community Third Space After Gates Are Locked At 9pm"
 date: 2026-08-07
 category: Parks
-author: Guest Author!
+author: Celia Lion
 image: ./cover.png
 imageAlt: 'A tailgate party with trucks and people in a dirt parking lot.'
 imageCaption: 'Make sure you squeeze your car in right before the gates close.'
