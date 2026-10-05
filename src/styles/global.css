@@ -1,47 +1,39 @@
 :root {
-	--color-bg: #f7f5f0;
-	--color-bg-elevated: #ffffff;
-	--color-text: #1c1c1c;
-	--color-text-muted: #63594a;
-	--color-border: #e3ddd0;
-	--color-masthead: #0b1622;
-	--color-masthead-text: #f7f5f0;
-	--color-masthead-muted: #9fb0bf;
-	--color-accent: #fcad03;
-	--color-accent-strong: #e0483f;
+	/* Each color is light-dark(<light value>, <dark value>). Which one applies
+	   follows `color-scheme` below: the visitor's system setting by default,
+	   or the header toggle's choice (saved as data-theme on <html>). */
+	--color-bg: light-dark(#f7f5f0, #16130f);
+	--color-bg-elevated: light-dark(#ffffff, #1e1a14);
+	--color-text: light-dark(#1c1c1c, #ece6da);
+	--color-text-muted: light-dark(#63594a, #a89b85);
+	--color-border: light-dark(#e3ddd0, #322c22);
+	--color-masthead: light-dark(#0b1622, #05090d);
+	--color-masthead-text: light-dark(#f7f5f0, #f2efe8);
+	--color-masthead-muted: light-dark(#9fb0bf, #7c8b98);
+	--color-accent: #c98a00;
+	--color-accent-strong: light-dark(#e0483f, #ff6b60);
 
 	--font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif;
 	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
 	--radius: 10px;
-	--shadow-sm: 0 1px 2px rgba(20, 15, 5, 0.08);
-	--shadow-md: 0 12px 32px rgba(20, 15, 5, 0.16);
+	--shadow-sm: 0 1px 2px light-dark(rgba(20, 15, 5, 0.08), rgba(0, 0, 0, 0.4));
+	--shadow-md: 0 12px 32px light-dark(rgba(20, 15, 5, 0.16), rgba(0, 0, 0, 0.5));
 	--max-width: 1120px;
+
+	color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-bg: #16130f;
-		--color-bg-elevated: #1e1a14;
-		--color-text: #ece6da;
-		--color-text-muted: #a89b85;
-		--color-border: #322c22;
-		--color-masthead: #05090d;
-		--color-masthead-text: #f2efe8;
-		--color-masthead-muted: #7c8b98;
-		--color-accent: #fcad03;
-		--color-accent-strong: #ff6b60;
-		--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-		--shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
-	}
+:root[data-theme='light'] {
+	color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+	color-scheme: dark;
 }
 
 * {
 	box-sizing: border-box;
-}
-
-html {
-	color-scheme: light dark;
 }
 
 body {
@@ -218,6 +210,54 @@ img {
 	--color-accent: #fc0388;
 }
 
+/* ---------- Light/dark toggle ---------- */
+
+.theme-toggle {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0.85rem 1rem;
+	border: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	transition: color 0.15s ease, background 0.15s ease;
+}
+
+.theme-toggle:hover {
+	color: var(--color-accent);
+	background: rgba(247, 245, 240, 0.06);
+}
+
+.theme-toggle svg {
+	width: 1.15rem;
+	height: 1.15rem;
+}
+
+/* Show the moon in light mode (click for dark) and the sun in dark mode. */
+.theme-icon-sun {
+	display: none;
+}
+
+:root[data-theme='dark'] .theme-icon-sun {
+	display: block;
+}
+
+:root[data-theme='dark'] .theme-icon-moon {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) .theme-icon-sun {
+		display: block;
+	}
+
+	:root:not([data-theme='light']) .theme-icon-moon {
+		display: none;
+	}
+}
+
 /* ---------- Article cards (home / archive) ---------- */
 
 .article-list {
@@ -319,8 +359,8 @@ img {
 
 .featured-article-image img {
 	width: 100%;
-	aspect-ratio: 3 / 2;
-	object-fit: cover;
+	max-width: 590px;
+	margin: 0 auto;
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-md);
 }

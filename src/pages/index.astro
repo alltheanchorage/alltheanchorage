@@ -19,10 +19,19 @@ const articles = mostRecent
 		)
 	: [];
 
-// `articles` is already sorted (main, then order, then date), so every
-// article marked `main` gets the hero layout, in priority order.
-const featured = articles.filter((article) => article.data.main);
-const rest = articles.filter((article) => !article.data.main);
+// `articles` is already sorted by order (then date). Walk it in that order,
+// giving `main` articles the hero layout and grouping consecutive regular
+// articles into card lists between them.
+type Block =
+	| { kind: 'hero'; article: (typeof articles)[number] }
+	| { kind: 'list'; articles: typeof articles };
+const blocks: Block[] = [];
+for (const article of articles) {
+	const last = blocks.at(-1);
+	if (article.data.main) blocks.push({ kind: 'hero', article });
+	else if (last?.kind === 'list') last.articles.push(article);
+	else blocks.push({ kind: 'list', articles: [article] });
+}
 ---
 
 <Layout title="Home">
@@ -31,16 +40,17 @@ const rest = articles.filter((article) => !article.data.main);
 			articles.length === 0 ? (
 				<p class="empty-state">No articles published yet. Check back soon.</p>
 			) : (
-				<>
-					{featured.map((article) => (
-						<FeaturedArticle article={article} />
-					))}
-					<ul class="article-list">
-						{rest.map((article) => (
-							<ArticleCard article={article} />
-						))}
-					</ul>
-				</>
+				blocks.map((block) =>
+					block.kind === 'hero' ? (
+						<FeaturedArticle article={block.article} />
+					) : (
+						<ul class="article-list">
+							{block.articles.map((article) => (
+								<ArticleCard article={article} />
+							))}
+						</ul>
+					),
+				)
 			)
 		}
 	</div>
