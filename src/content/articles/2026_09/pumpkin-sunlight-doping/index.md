@@ -7,6 +7,7 @@ image: ./cover.png
 imageAlt: A black and white mugshot of a pumpkin.
 imageCaption: Don't let this cute squash fool you, it is a menace.
 order: 20
+main: true
 ---
 
 Sources report that the winner of the giant pumpkin weigh-off at the Alaska State Fair was disqualified for frequent sunlight doping. “After an investigation into this year’s pumpkin, we found extensive proof that the large squash had been injecting light from the sun straight into its leaves via a process called ‘photosynthesis’ for months leading up to the competition,” read a report on the case. It continues, “The evidence, gathered from a complex chloroplast analysis, is indisputable. Given the circumstances, we found it necessary to disqualify this Atlantic Giant pumpkin from the competition and turn it into pumpkin bread.”
