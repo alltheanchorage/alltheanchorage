@@ -1,7 +1,7 @@
 ---
 title: How To Remedy Heartbreak QUICK?
 date: 2026-09-30
-category: Advice
+category: Calling Nome For Advice
 author: Celia Lion
 image: ./cover.png
 imageAlt: A pile full of hobby-related objects including paint, board games, instruments, and yarn.
@@ -10,8 +10,6 @@ order: 10
 advice: true
 guest: true
 ---
-
-**Calling Nome for Advice**
 
 Dear Calling Nome,
 
