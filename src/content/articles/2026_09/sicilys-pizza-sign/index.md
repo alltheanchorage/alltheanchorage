@@ -3,9 +3,6 @@ title: Natural Gas Shortage Causes Sicily's Pizza To Decommission Another Letter
 date: 2026-09-30
 category: Energy
 author: Professor Puffin
-image: ./cover.png
-imageAlt:
-imageCaption: 
 order: 70
 ---
 
