@@ -39,9 +39,9 @@ const articles = defineCollection({
 			author: z.string().optional(),
 			// Set true to keep working on an article without publishing it.
 			draft: z.boolean().default(false),
-			// Feature this article in the centered hero layout on the home page, for
-			// whichever month it belongs to. Multiple articles can be marked main;
-			// they're stacked in `order` (then date) order above the normal cards.
+			// Show this article in the centered hero layout on the home page. Any
+			// number of articles can be marked main; it only changes the layout,
+			// not the position, which always follows `order`.
 			main: z.boolean().default(false),
 			// Breaks ties among articles in the same year+month — higher numbers sort
 			// higher on the page. Has no effect across different months (chronological

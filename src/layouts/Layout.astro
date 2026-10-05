@@ -21,6 +21,13 @@ const { title, description = 'Satirical news from Anchorage, Alaska.' } = Astro.
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} · {SITE_TITLE}</title>
+		<script is:inline>
+			// Apply a saved light/dark choice before the page paints, so there's no flash.
+			try {
+				const theme = localStorage.getItem('theme');
+				if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+			} catch {}
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

@@ -3,8 +3,8 @@ import { articleMonth, articleYear } from './dates';
 
 /**
  * Sorts articles for display: newest month first, then within a month by
- * `main` (always on top), then `order` (higher first), then `date`, then
- * `id` as a final deterministic tiebreaker.
+ * `order` (higher first), then `date`, then `id` as a final deterministic
+ * tiebreaker. `main` only changes an article's layout, never its position.
  */
 export function sortArticlesForDisplay(
 	articles: CollectionEntry<'articles'>[],
@@ -15,8 +15,6 @@ export function sortArticlesForDisplay(
 
 		const monthDiff = articleMonth(b.data.date) - articleMonth(a.data.date);
 		if (monthDiff !== 0) return monthDiff;
-
-		if (a.data.main !== b.data.main) return a.data.main ? -1 : 1;
 
 		const orderDiff = b.data.order - a.data.order;
 		if (orderDiff !== 0) return orderDiff;
