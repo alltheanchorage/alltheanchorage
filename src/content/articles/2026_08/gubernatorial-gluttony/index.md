@@ -2,7 +2,7 @@
 title: "Wild Scoops Launches 17 New ‘Gubernatorial Gluttony' Flavors"
 date: 2026-08-07
 category: Business
-author: John S. Cooper
+author: Marb Murrelet
 image: ./cover.png
 imageAlt: 'The heads of JKT, Bernadette Wilson, and Tom Begich on ice cream cones.'
 imageCaption: "Eat all 17 and you'll be rewarded with a scoop of Double Dutch Dunleavy Chocolate."

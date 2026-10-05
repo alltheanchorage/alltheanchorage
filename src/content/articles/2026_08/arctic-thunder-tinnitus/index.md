@@ -2,7 +2,7 @@
 title: '"BRING ON THE TINNITUUUUUUS!" Cheer Anchorage Residents In Preparation For Arctic Thunder'
 date: 2026-08-07
 category: Events
-author: Staff Writer
+author: Marb Murrelet
 image: ./cover.png
 imageAlt: 'The Blue Angels flying amidst cartoon images of ears and swirls.'
 imageCaption: 'BRING IT ON!'

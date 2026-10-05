@@ -2,7 +2,7 @@
 title: '"It Is Almost Upon Us": Area Nordic Skiers Salivating At Sight Of Chugach Termination Dust'
 date: 2026-09-30
 category: Recreation
-author: Ms. Marbled Murrelet
+author: Marb Murrelet
 image: ./cover.png
 imageAlt: Cutouts of Nordic skiers pasted on a background of a mountain with fresh snow.
 imageCaption: Just as the prophecy foretold!

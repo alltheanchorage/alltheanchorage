@@ -2,7 +2,7 @@
 title: "Title Wave Books Inundated By Tsunami Of Obscure 2007 Wii Games"
 date: 2026-08-07
 category: Economy
-author: Staff Writer
+author: Professor Puffin
 image: ./cover.png
 imageAlt: 'Photo of the inside of a bookstore with a cartoon wave, games, CDs, and Wii remotes in the foreground.'
 imageCaption: 'A bore tide of presidential biographies was not far behind.'

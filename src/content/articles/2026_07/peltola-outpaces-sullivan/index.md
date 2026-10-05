@@ -2,7 +2,7 @@
 title: 'Peltola Vastly Outpaces Sullivan In Campaign Fundraising, Also In 100-Meter Dash'
 date: 2026-07-16
 category: Politics
-author: Political Correspondent
+author: Mr. Griz
 order: 79
 ---
 

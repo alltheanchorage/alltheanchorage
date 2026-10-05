@@ -2,7 +2,7 @@
 title: "Petersburg Dan Sullivan To Adopt Mother’s Maiden Name: 'Incümbeñt'"
 date: 2026-08-07
 category: Politics
-author: Political Correspondent
+author: Dr. Bell Uga
 image: ./cover.png
 imageAlt: 'The Petersburg Dan Sullivan and incumbent Dan Sullivan merging into one.'
 imageCaption: 'The lines are becoming blurred.'

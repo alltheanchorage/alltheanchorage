@@ -2,7 +2,7 @@
 title: "Bar Of Soap Dropped In Tub Has Career In X Games"
 date: 2026-08-07
 category: World
-author: International Correspondent
+author: Mr. Griz
 image: ./cover.png
 imageAlt: 'Bar of soap on skateboard doing a trick with spectators watching.'
 imageCaption: 'Did you see that Olay Ollie?!'

@@ -2,7 +2,7 @@
 title: "Pick. Click. Give. Regret."
 date: 2026-08-07
 category: Economy
-author: Staff Writer
+author: Mooooose
 image: ./cover.png
 imageAlt: 'A woman with her head in her hands picturing a man sorting through donations.'
 imageCaption: 'To donate or indulge oneself?'
