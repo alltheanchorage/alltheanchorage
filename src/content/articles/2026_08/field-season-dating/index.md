@@ -2,7 +2,7 @@
 title: 'Is He Not Interested Or Is It Just Alaskan Field Season?'
 date: 2026-08-07
 category: Advice
-author: Guest Author!
+author: Celia Lion
 image: ./cover.png
 imageAlt: 'People with hard hats and backpacks walking in a field, with a cartoon broken heart in the air.'
 imageCaption: 'Yukon do this!'
