@@ -7,6 +7,7 @@ image: ./cover.png
 imageAlt: 'A tailgate party with trucks and people in a dirt parking lot.'
 imageCaption: 'Make sure you squeeze your car in right before the gates close.'
 order: 5
+guest: true
 ---
 
 Nationwide, there are rising concerns about the lack of 'third spaces' for communities, especially for youth and teens. These third spaces act as social havens outside the workplace and home, and typically are gathering places like libraries, cafes, or community centers. 

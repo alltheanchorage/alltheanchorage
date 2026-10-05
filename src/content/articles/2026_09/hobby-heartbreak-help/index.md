@@ -5,8 +5,10 @@ category: Advice
 author: Celia Lion
 image: ./cover.png
 imageAlt: A pile full of hobby-related objects including paint, board games, instruments, and yarn.
-imageCaption: The world needs more giant quilts.do
+imageCaption: The world needs more giant quilts.
 order: 10
+advice: true
+guest: true
 ---
 
 **Calling Nome for Advice**

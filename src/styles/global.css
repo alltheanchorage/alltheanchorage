@@ -213,6 +213,11 @@ img {
 	}
 }
 
+/* Articles flagged `advice: true` use pink instead of gold for their highlights. */
+.advice {
+	--color-accent: #fc0388;
+}
+
 /* ---------- Article cards (home / archive) ---------- */
 
 .article-list {
@@ -322,9 +327,13 @@ img {
 
 /* ---------- Article page ---------- */
 
+/* Centered column; contents stay left-aligned within it. */
+.article-page {
+	max-width: calc(760px + 3rem);
+}
+
 .article-header {
 	padding: 3rem 0 1.5rem;
-	max-width: 760px;
 }
 
 .article-title {
@@ -342,7 +351,8 @@ img {
 }
 
 .article-figure img {
-	width: 55%;
+	width: 100%;
+	max-width: 590px;
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-md);
 }
@@ -362,6 +372,23 @@ img {
 
 .article-body p {
 	margin: 0 0 1.3em;
+}
+
+.guest-note {
+	margin-top: 2.5rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--color-border);
+	font-size: 0.95rem;
+	font-style: italic;
+	color: var(--color-text-muted);
+}
+
+.guest-note a {
+	text-decoration: underline;
+}
+
+.guest-note a:hover {
+	color: var(--color-accent);
 }
 
 /* ---------- Simple content pages (About / Suggestions) ---------- */

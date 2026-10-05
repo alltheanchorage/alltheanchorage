@@ -10,12 +10,12 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, excerpt, author, category } = article.data;
+const { title, date, image, imageAlt, excerpt, author, category, advice } = article.data;
 const href = url(`/articles/${article.id}/`);
 const excerptText = makeExcerpt(article.body, excerpt);
 ---
 
-<li class:list={['article-card', { 'has-image': !!image }]}>
+<li class:list={['article-card', { 'has-image': !!image, advice }]}>
 	{
 		image && (
 			<div class="article-card-image">

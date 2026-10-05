@@ -19,10 +19,10 @@ const articles = mostRecent
 		)
 	: [];
 
-// `articles` is already sorted (main, then order, then date), so if more
-// than one is marked `main`, `.find()` naturally picks the top-priority one.
-const featured = articles.find((article) => article.data.main);
-const rest = featured ? articles.filter((article) => article !== featured) : articles;
+// `articles` is already sorted (main, then order, then date), so every
+// article marked `main` gets the hero layout, in priority order.
+const featured = articles.filter((article) => article.data.main);
+const rest = articles.filter((article) => !article.data.main);
 ---
 
 <Layout title="Home">
@@ -32,7 +32,9 @@ const rest = featured ? articles.filter((article) => article !== featured) : art
 				<p class="empty-state">No articles published yet. Check back soon.</p>
 			) : (
 				<>
-					{featured && <FeaturedArticle article={featured} />}
+					{featured.map((article) => (
+						<FeaturedArticle article={article} />
+					))}
 					<ul class="article-list">
 						{rest.map((article) => (
 							<ArticleCard article={article} />
