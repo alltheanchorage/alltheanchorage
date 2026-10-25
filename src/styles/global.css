@@ -10,7 +10,7 @@
 	/* The header keeps its dark colors in both modes. */
 	--color-masthead: #05090d;
 	--color-masthead-text: #f2efe8;
-	--color-masthead-muted: #7c8b98;
+	--color-masthead-muted: #a9b6c1;
 	--color-accent: #c98a00;
 	--color-accent-strong: light-dark(#e0483f, #ff6b60);
 
@@ -84,20 +84,64 @@ img {
 }
 
 .masthead {
+	--title-size: clamp(1.75rem, 4vw, 2.75rem);
+	--tagline-size: 0.95rem;
+	--tagline-lines: 1;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	text-align: center;
-	flex-wrap: wrap;
-	gap: 0.25rem 1.5rem;
+	gap: 1rem;
 	padding-top: 1.5rem;
 	padding-bottom: 1rem;
+}
+
+/* On phones the tagline always takes exactly two balanced lines, so the
+   logo beside it can be sized to match. */
+@media (max-width: 639px) {
+	.masthead {
+		--title-size: 1.5rem;
+		--tagline-size: 0.8rem;
+		--tagline-lines: 2;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.masthead-tagline {
+		max-width: 17.5rem;
+		text-wrap: balance;
+	}
+}
+
+/* The smallest phones need a smaller title to keep it on one line. */
+@media (max-width: 359px) {
+	.masthead {
+		--title-size: 1.3rem;
+		--tagline-size: 0.72rem;
+	}
+}
+
+/* Sized to run from the top of the title's capitals to the bottom of the
+   tagline's last line. The multipliers come from Playfair Display's metrics
+   at the body line-height (1.55): the capitals start 0.396em into the
+   title's line box, and the tagline's letters end 1.389em into its last. */
+.masthead-logo {
+	flex-shrink: 0;
+	margin-top: calc(0.396 * var(--title-size));
+}
+
+.masthead-logo img {
+	width: auto;
+	height: calc(
+		1.154 * var(--title-size) + 0.15rem + (var(--tagline-lines) - 1) * 1.55 * var(--tagline-size) +
+			1.389 * var(--tagline-size)
+	);
 }
 
 .masthead-title {
 	font-family: var(--font-headline);
 	font-weight: 900;
-	font-size: clamp(1.75rem, 4vw, 2.75rem);
+	font-size: var(--title-size);
 	letter-spacing: 0.01em;
 	margin-bottom: 0.15rem;
 }
@@ -110,7 +154,7 @@ img {
 	font-family: var(--font-headline);
 	font-style: italic;
 	color: var(--color-masthead-muted);
-	font-size: 0.95rem;
+	font-size: var(--tagline-size);
 }
 
 .site-nav {
@@ -256,6 +300,76 @@ img {
 	.nav-item:hover .month-list,
 	.nav-item:focus-within .month-list {
 		display: block;
+	}
+}
+
+/* ---------- Headline ticker (home page) ---------- */
+
+/* Dark in both modes like the header, with the same gold line underneath. */
+.ticker {
+	background: var(--color-masthead);
+	border-bottom: 3px solid var(--color-accent);
+	overflow: hidden;
+}
+
+.ticker-track {
+	display: flex;
+	width: max-content;
+	animation: ticker-scroll var(--ticker-duration) linear infinite;
+}
+
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track {
+	animation-play-state: paused;
+}
+
+.ticker-list {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ticker-list li {
+	white-space: nowrap;
+	padding: 0.6rem 0;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: var(--color-masthead-muted);
+}
+
+/* Every headline, the last included, is followed by a dot so the loop's seam
+   looks like any other gap. */
+.ticker-list li::after {
+	content: '·' / '';
+	margin: 0 1rem;
+}
+
+.ticker-list a:hover,
+.ticker-list a:focus-visible {
+	color: var(--color-accent);
+}
+
+@keyframes ticker-scroll {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* Without motion, the bar becomes a row you can scroll by hand. */
+@media (prefers-reduced-motion: reduce) {
+	.ticker {
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.ticker-track {
+		animation: none;
+		padding: 0 1rem;
+	}
+
+	.ticker-list[aria-hidden='true'] {
+		display: none;
 	}
 }
 
@@ -582,14 +696,19 @@ img {
 	font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
 
+/* One row of month pills that scrolls sideways once there are too many to fit. */
 .month-nav-inline {
 	display: flex;
-	flex-wrap: wrap;
 	gap: 0.5rem;
-	padding: 1rem 0 0;
+	padding: 1rem 0 0.5rem;
+	overflow-x: auto;
+	scrollbar-width: thin;
+	-webkit-overflow-scrolling: touch;
 }
 
 .month-nav-inline a {
+	flex-shrink: 0;
+	white-space: nowrap;
 	padding: 0.4rem 0.9rem;
 	border: 1px solid var(--color-border);
 	border-radius: 999px;

@@ -2,22 +2,29 @@
 import { getCollection } from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
 import FeaturedArticle from '../components/FeaturedArticle.astro';
+import HeadlineTicker from '../components/HeadlineTicker.astro';
 import Layout from '../layouts/Layout.astro';
-import { articleMonth, articleYear } from '../lib/dates';
+import { articleMonth, articleYear, monthName } from '../lib/dates';
 import { sortArticlesForDisplay } from '../lib/sortArticles';
 
 const allArticles = sortArticlesForDisplay(await getCollection('articles', ({ data }) => !data.draft));
 
+const sameMonth = (a: (typeof allArticles)[number], b: (typeof allArticles)[number]) =>
+	articleYear(a.data.date) === articleYear(b.data.date) &&
+	articleMonth(a.data.date) === articleMonth(b.data.date);
+
 // Home page only shows the most recent year/month that has any published
 // articles; archive pages still show everything for their period.
 const mostRecent = allArticles[0];
-const articles = mostRecent
-	? allArticles.filter(
-			(article) =>
-				articleYear(article.data.date) === articleYear(mostRecent.data.date) &&
-				articleMonth(article.data.date) === articleMonth(mostRecent.data.date),
-		)
-	: [];
+const articles = mostRecent ? allArticles.filter((article) => sameMonth(article, mostRecent)) : [];
+
+// The ticker scrolls the previous month's headlines: the newest month with
+// articles that comes before the one shown on the page.
+const previous = allArticles.find((article) => !sameMonth(article, mostRecent));
+const tickerArticles = previous ? allArticles.filter((article) => sameMonth(article, previous)) : [];
+const tickerLabel = previous
+	? `Headlines from ${monthName(articleMonth(previous.data.date))} ${articleYear(previous.data.date)}`
+	: '';
 
 // `articles` is already sorted by order (then date). Walk it in that order,
 // giving `main` articles the hero layout and grouping consecutive regular
@@ -35,6 +42,7 @@ for (const article of articles) {
 ---
 
 <Layout title="Home">
+	<HeadlineTicker articles={tickerArticles} label={tickerLabel} />
 	<div class="container">
 		{
 			articles.length === 0 ? (

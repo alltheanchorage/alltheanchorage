@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import { getYearMonthNav } from '../lib/nav';
 import { monthName, monthSlug } from '../lib/dates';
 import { url } from '../lib/paths';
@@ -9,6 +11,9 @@ const yearNav = await getYearMonthNav();
 
 <header class="site-header">
 	<div class="container masthead">
+		<a class="masthead-logo" href={url('/')} aria-hidden="true" tabindex="-1">
+			<Image src={logo} alt="" width={160} densities={[1, 2]} loading="eager" />
+		</a>
 		<div>
 			<p class="masthead-title"><a href={url('/')}>{SITE_TITLE}</a></p>
 			<p class="masthead-tagline">{SITE_TAGLINE}</p>

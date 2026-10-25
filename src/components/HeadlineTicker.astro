@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/paths';
+
+interface Props {
+	articles: CollectionEntry<'articles'>[];
+	label: string;
+}
+
+const { articles, label } = Astro.props;
+
+// Repeat short months so one pass of the loop is always wider than the screen.
+let items = articles;
+const length = (list: typeof articles) => list.reduce((sum, a) => sum + a.data.title.length + 3, 0);
+while (items.length > 0 && length(items) < 250) items = [...items, ...articles];
+
+// Scroll at a steady speed however many headlines there are.
+const duration = `${Math.round(length(items) * 0.22)}s`;
+---
+
+{
+	items.length > 0 && (
+		<section class="ticker" aria-label={label}>
+			<div class="ticker-track" style={`--ticker-duration: ${duration}`}>
+				<ul class="ticker-list">
+					{items.map((article) => (
+						<li>
+							<a href={url(`/articles/${article.id}/`)}>{article.data.title}</a>
+						</li>
+					))}
+				</ul>
+				{/* A second copy right behind the first makes the loop seamless. */}
+				<ul class="ticker-list" aria-hidden="true">
+					{items.map((article) => (
+						<li>
+							<a href={url(`/articles/${article.id}/`)} tabindex="-1">
+								{article.data.title}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+	)
+}
