@@ -13,6 +13,8 @@
 	--color-masthead-muted: #a9b6c1;
 	--color-accent: #c98a00;
 	--color-accent-strong: light-dark(#e0483f, #ff6b60);
+	/* The blue of the logo's water, used for author names. */
+	--color-author: #3f8ec4;
 
 	--font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif;
 	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -103,12 +105,15 @@ img {
 		--title-size: 1.5rem;
 		--tagline-size: 0.8rem;
 		--tagline-lines: 2;
+		gap: 0.75rem;
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
 
+	/* Just wide enough for the two lines, so the text block hugs them instead
+	   of leaving empty space between it and the logo. */
 	.masthead-tagline {
-		max-width: 17.5rem;
+		max-width: 17em;
 		text-wrap: balance;
 	}
 }
@@ -121,21 +126,24 @@ img {
 	}
 }
 
-/* Sized to run from the top of the title's capitals to the bottom of the
-   tagline's last line. The multipliers come from Playfair Display's metrics
-   at the body line-height (1.55): the capitals start 0.396em into the
-   title's line box, and the tagline's letters end 1.389em into its last. */
+/* `--logo-span` runs from the top of the title's capitals to the bottom of
+   the tagline's last line. The multipliers come from Playfair Display's
+   metrics at the body line-height (1.55): the capitals start 0.396em into the
+   title's line box, and the tagline's letters end 1.389em into its last.
+   The logo is `--logo-scale` times that span, centered on it. */
 .masthead-logo {
+	--logo-scale: 1.2;
+	--logo-span: calc(
+		1.154 * var(--title-size) + 0.15rem + (var(--tagline-lines) - 1) * 1.55 * var(--tagline-size) +
+			1.389 * var(--tagline-size)
+	);
 	flex-shrink: 0;
-	margin-top: calc(0.396 * var(--title-size));
+	margin-top: calc(0.396 * var(--title-size) - (var(--logo-scale) - 1) / 2 * var(--logo-span));
 }
 
 .masthead-logo img {
 	width: auto;
-	height: calc(
-		1.154 * var(--title-size) + 0.15rem + (var(--tagline-lines) - 1) * 1.55 * var(--tagline-size) +
-			1.389 * var(--tagline-size)
-	);
+	height: calc(var(--logo-scale) * var(--logo-span));
 }
 
 .masthead-title {
@@ -281,6 +289,10 @@ img {
 }
 
 @media (min-width: 780px) {
+	.nav-list {
+		justify-content: center;
+	}
+
 	.nav-item {
 		position: relative;
 	}
@@ -318,8 +330,8 @@ img {
 	animation: ticker-scroll var(--ticker-duration) linear infinite;
 }
 
-.ticker:hover .ticker-track,
-.ticker:focus-within .ticker-track {
+/* Only pauses while a headline has keyboard focus, so it can't slide away. */
+.ticker:has(a:focus-visible) .ticker-track {
 	animation-play-state: paused;
 }
 
@@ -353,23 +365,6 @@ img {
 @keyframes ticker-scroll {
 	to {
 		transform: translateX(-50%);
-	}
-}
-
-/* Without motion, the bar becomes a row you can scroll by hand. */
-@media (prefers-reduced-motion: reduce) {
-	.ticker {
-		overflow-x: auto;
-		scrollbar-width: none;
-	}
-
-	.ticker-track {
-		animation: none;
-		padding: 0 1rem;
-	}
-
-	.ticker-list[aria-hidden='true'] {
-		display: none;
 	}
 }
 
@@ -495,6 +490,27 @@ img {
 	font-size: 0.85rem;
 	color: var(--color-text-muted);
 	margin: 0.5rem 0 0;
+}
+
+/* Author names in bylines. Authors with their own page are underlined links. */
+.author {
+	font-weight: 700;
+	color: var(--color-author);
+}
+
+.author-link {
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+/* Advice articles sign off in red instead. */
+.advice .author {
+	color: var(--color-accent-strong);
+}
+
+.author-link:hover,
+.advice .author-link:hover {
+	color: var(--color-accent);
 }
 
 .read-more {
@@ -630,6 +646,12 @@ img {
 
 .highlight {
 	color: var(--color-accent);
+}
+
+.page-body hr {
+	border: none;
+	border-top: 1px solid var(--color-border);
+	margin: 2.5rem 0 2rem;
 }
 
 .form-embed {

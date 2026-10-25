@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
+import AuthorName from '../../components/AuthorName.astro';
 import Layout from '../../layouts/Layout.astro';
 import { formatDate } from '../../lib/dates';
 import { url } from '../../lib/paths';
@@ -25,7 +26,7 @@ const { Content } = await render(article);
 			<h1 class="article-title">{title}</h1>
 			<p class="article-meta">
 				{formatDate(date)}
-				{author && ` · ${author}`}
+				{author && <> · <AuthorName name={author} /></>}
 			</p>
 		</header>
 		{

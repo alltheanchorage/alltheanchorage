@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import AuthorName from './AuthorName.astro';
 import { formatDate } from '../lib/dates';
 import { url } from '../lib/paths';
 
@@ -27,7 +28,7 @@ const href = url(`/articles/${article.id}/`);
 	<p class="article-card-kicker">{category}</p>
 	<p class="article-card-meta">
 		{formatDate(date)}
-		{author && ` · ${author}`}
+		{author && <> · <AuthorName name={author} /></>}
 		{' · '}<a class="read-more" href={href}>Read more →</a>
 	</p>
 </div>

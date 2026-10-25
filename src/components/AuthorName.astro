@@ -1,0 +1,12 @@
+---
+import { authorHref } from '../lib/authors';
+
+interface Props {
+	name: string;
+}
+
+const { name } = Astro.props;
+const href = authorHref(name);
+---
+
+{href ? <a class="author author-link" href={href}>{name}</a> : <strong class="author">{name}</strong>}

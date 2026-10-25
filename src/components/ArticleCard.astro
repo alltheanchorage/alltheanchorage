@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import AuthorName from './AuthorName.astro';
 import { formatDate } from '../lib/dates';
 import { makeExcerpt } from '../lib/excerpt';
 import { url } from '../lib/paths';
@@ -31,7 +32,7 @@ const excerptText = makeExcerpt(article.body, excerpt);
 		{excerptText && <p class="article-card-excerpt">{excerptText}</p>}
 		<p class="article-card-meta">
 			{formatDate(date)}
-			{author && ` · ${author}`}
+			{author && <> · <AuthorName name={author} /></>}
 			{' · '}<a class="read-more" href={href}>Read more →</a>
 		</p>
 	</div>

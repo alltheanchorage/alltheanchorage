@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import { AUTHORS_WITH_PAGES, authorSlug } from '../../lib/authors';
+import { sortArticlesForDisplay } from '../../lib/sortArticles';
+
+export function getStaticPaths() {
+	return AUTHORS_WITH_PAGES.map((name) => ({ params: { slug: authorSlug(name) }, props: { name } }));
+}
+
+const { name } = Astro.props;
+const articles = sortArticlesForDisplay(
+	await getCollection('articles', ({ data }) => !data.draft && data.author === name),
+);
+---
+
+<Layout title={`Articles by ${name}`}>
+	<div class="container">
+		<header class="archive-header">
+			<h1 class="archive-title">Articles by <span class="author">{name}</span></h1>
+		</header>
+		{
+			articles.length === 0 ? (
+				<p class="empty-state">No articles yet.</p>
+			) : (
+				<ul class="article-list">
+					{articles.map((article) => <ArticleCard article={article} />)}
+				</ul>
+			)
+		}
+	</div>
+</Layout>
