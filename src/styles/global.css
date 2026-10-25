@@ -13,7 +13,7 @@
 	--color-masthead-muted: #a9b6c1;
 	--color-accent: #c98a00;
 	--color-accent-strong: light-dark(#e0483f, #ff6b60);
-	/* The blue of the logo's water, used for author names. */
+	/* The blue of the logo's water, used for author page headings. */
 	--color-author: #3f8ec4;
 
 	--font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -495,7 +495,6 @@ img {
 /* Author names in bylines. Authors with their own page are underlined links. */
 .author {
 	font-weight: 700;
-	color: var(--color-author);
 }
 
 .author-link {
@@ -503,14 +502,13 @@ img {
 	text-underline-offset: 0.15em;
 }
 
-/* Advice articles sign off in red instead. */
-.advice .author {
-	color: var(--color-accent-strong);
+.author-link:hover {
+	color: var(--color-accent);
 }
 
-.author-link:hover,
-.advice .author-link:hover {
-	color: var(--color-accent);
+/* The author's name in the "Articles by …" heading on their page. */
+.author-page-name {
+	color: var(--color-author);
 }
 
 .read-more {
