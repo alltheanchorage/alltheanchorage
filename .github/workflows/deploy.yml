@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Rebuild daily so the home page's Most Read box stays current
+  # (10:00 UTC is 1–2am in Anchorage).
+  schedule:
+    - cron: '0 10 * * *'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +36,8 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import ArticleCard from '../components/ArticleCard.astro';
 import FeaturedArticle from '../components/FeaturedArticle.astro';
 import HeadlineTicker from '../components/HeadlineTicker.astro';
+import MostRead from '../components/MostRead.astro';
 import Layout from '../layouts/Layout.astro';
 import { articleMonth, articleYear, monthName } from '../lib/dates';
+import { getMostReadArticles } from '../lib/mostRead';
 import { sortArticlesForDisplay } from '../lib/sortArticles';
 
 const allArticles = sortArticlesForDisplay(await getCollection('articles', ({ data }) => !data.draft));
@@ -39,6 +41,13 @@ for (const article of articles) {
 	else if (last?.kind === 'list') last.articles.push(article);
 	else blocks.push({ kind: 'list', articles: [article] });
 }
+
+// The top article (normally `main`) shares the first row with the Most Read
+// box: side by side on desktop, the box below it on phones.
+const first = blocks[0];
+const lead = first?.kind === 'hero' ? first : undefined;
+const rest = lead ? blocks.slice(1) : blocks;
+const mostRead = await getMostReadArticles(5, 7);
 ---
 
 <Layout title="Home">
@@ -48,17 +57,23 @@ for (const article of articles) {
 			articles.length === 0 ? (
 				<p class="empty-state">No articles published yet. Check back soon.</p>
 			) : (
-				blocks.map((block) =>
-					block.kind === 'hero' ? (
-						<FeaturedArticle article={block.article} />
-					) : (
-						<ul class="article-list">
-							{block.articles.map((article) => (
-								<ArticleCard article={article} />
-							))}
-						</ul>
-					),
-				)
+				<>
+					<div class:list={['home-lead', { 'with-most-read': lead && mostRead.length > 0 }]}>
+						{lead && <FeaturedArticle article={lead.article} />}
+						<MostRead articles={mostRead} />
+					</div>
+					{rest.map((block) =>
+						block.kind === 'hero' ? (
+							<FeaturedArticle article={block.article} />
+						) : (
+							<ul class="article-list">
+								{block.articles.map((article) => (
+									<ArticleCard article={article} />
+								))}
+							</ul>
+						),
+					)}
+				</>
 			)
 		}
 	</div>

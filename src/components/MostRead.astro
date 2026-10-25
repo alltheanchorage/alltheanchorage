@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/paths';
+
+interface Props {
+	articles: CollectionEntry<'articles'>[];
+}
+
+const { articles } = Astro.props;
+---
+
+{
+	articles.length > 0 && (
+		<aside class="most-read" aria-labelledby="most-read-title">
+			<h2 class="most-read-title" id="most-read-title">Most Read</h2>
+			<ol class="most-read-list">
+				{articles.map((article) => (
+					<li>
+						<a class="most-read-item" href={url(`/articles/${article.id}/`)}>
+							{article.data.image && (
+								<Image
+									class="most-read-image"
+									src={article.data.image}
+									alt=""
+									width={128}
+									height={128}
+								/>
+							)}
+							<span class="most-read-headline">{article.data.title}</span>
+						</a>
+					</li>
+				))}
+			</ol>
+		</aside>
+	)
+}
