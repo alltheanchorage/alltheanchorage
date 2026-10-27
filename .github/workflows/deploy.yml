@@ -4,9 +4,10 @@ on:
   push:
     branches: [main]
   # Rebuild daily so the home page's Most Read box stays current
-  # (10:00 UTC is 1–2am in Anchorage).
+  # (10:17 UTC is 1–2am in Anchorage). GitHub often delays scheduled runs by
+  # hours, worst at the top of the hour, hence the odd minute.
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '17 10 * * *'
   workflow_dispatch:
 
 permissions:

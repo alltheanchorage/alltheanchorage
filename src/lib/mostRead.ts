@@ -5,6 +5,20 @@ interface HitsResponse {
 	hits: { path: string; count: number }[];
 }
 
+async function fetchHits(api: URL, token: string): Promise<HitsResponse['hits']> {
+	const response = await fetch(api, {
+		headers: { Authorization: `Bearer ${token}` },
+		signal: AbortSignal.timeout(15_000),
+	});
+	if (!response.ok) {
+		// Error pages are full HTML; the message is in the first <p>.
+		const body = await response.text();
+		const message = body.match(/<p>([^<]*)<\/p>/)?.[1] ?? body.slice(0, 200);
+		throw new Error(`HTTP ${response.status}: ${message}`);
+	}
+	return ((await response.json()) as HitsResponse).hits ?? [];
+}
+
 /**
  * The articles with the most visitors over the past `days`, according to
  * GoatCounter, fetched when the site is built. Needs a read-statistics API key
@@ -23,17 +37,21 @@ export async function getMostReadArticles(count = 5, days = 7): Promise<Collecti
 	api.searchParams.set('start', start.toISOString().replace(/\.\d+Z$/, 'Z'));
 	api.searchParams.set('limit', '100');
 
-	let hits: HitsResponse['hits'];
-	try {
-		const response = await fetch(api, {
-			headers: { Authorization: `Bearer ${token}` },
-			signal: AbortSignal.timeout(15_000),
-		});
-		if (!response.ok) throw new Error(`HTTP ${response.status}: ${await response.text()}`);
-		hits = ((await response.json()) as HitsResponse).hits ?? [];
-	} catch (error) {
-		console.warn(`[most read] Couldn't fetch GoatCounter stats, leaving the box out: ${error}`);
-		return [];
+	// GoatCounter occasionally errors for no lasting reason, so try twice
+	// before giving up on the box until the next build.
+	let hits: HitsResponse['hits'] | undefined;
+	for (let attempt = 1; !hits; attempt++) {
+		try {
+			hits = await fetchHits(api, token);
+		} catch (error) {
+			if (attempt < 2) {
+				console.warn(`[most read] Couldn't fetch GoatCounter stats, retrying: ${error}`);
+				await new Promise((resolve) => setTimeout(resolve, 5_000));
+			} else {
+				console.warn(`[most read] Couldn't fetch GoatCounter stats, leaving the box out: ${error}`);
+				return [];
+			}
+		}
 	}
 
 	// Tally visitors per article; "/articles/x" and "/articles/x/" both count.
