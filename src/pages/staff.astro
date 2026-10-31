@@ -3,42 +3,61 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { AUTHORS_WITH_PORTRAITS, authorFullPhoto, authorHref } from '../lib/authors';
 
+/** Role groups, in page order. Anyone with a portrait who isn't named here is a columnist. */
+const ROLES: { role: string; names?: string[] }[] = [
+	{ role: 'Editor', names: ['Steve Marten'] },
+	{ role: 'Contributors', names: ['Celia Lion', 'Lysander Lynx'] },
+	{ role: 'Columnists' },
+];
+const named = new Set(ROLES.flatMap(({ names }) => names ?? []));
+
 /** Staff with an original hand-drawn portrait; authors without one don't appear.
 	Photos of authors with their own page link to it. */
-const staff = AUTHORS_WITH_PORTRAITS.map((name) => ({
+const toEntry = (name: string) => ({
 	name,
 	photo: authorFullPhoto(name),
 	href: authorHref(name),
-})).filter((entry) => entry.photo);
+});
+const groups = ROLES.map(({ role, names }) => ({
+	role,
+	staff: (names ?? AUTHORS_WITH_PORTRAITS.filter((name) => !named.has(name)))
+		.map(toEntry)
+		.filter((entry) => entry.photo),
+})).filter(({ staff }) => staff.length > 0);
 ---
 
 <Layout title="Staff" description="Hand-drawn portraits of the staff of All The Anchorage.">
 	<div class="container">
 		<div class="staff-grid">
 			{
-				staff.map(({ name, photo, href }) =>
-					href ? (
-						<a class="staff-link" href={href}>
-							<Image
-								class="staff-photo"
-								src={photo}
-								alt={`Hand-drawn portrait of ${name}`}
-								width={640}
-								densities={[1, 2]}
-								loading="lazy"
-							/>
-						</a>
-					) : (
-						<Image
-							class="staff-photo"
-							src={photo}
-							alt={`Hand-drawn portrait of ${name}`}
-							width={640}
-							densities={[1, 2]}
-							loading="lazy"
-						/>
-					)
-				)
+				groups.map(({ role, staff }) => (
+					<>
+						<h2 class="staff-role">{role}</h2>
+						{staff.map(({ name, photo, href }) =>
+							href ? (
+								<a class="staff-link" href={href}>
+									<Image
+										class="staff-photo"
+										src={photo!}
+										alt={`Hand-drawn portrait of ${name}`}
+										width={640}
+										densities={[1, 2]}
+										loading="lazy"
+									/>
+								</a>
+							) : (
+								<Image
+									class="staff-photo"
+									src={photo!}
+									alt={`Hand-drawn portrait of ${name}`}
+									width={640}
+									densities={[1, 2]}
+									loading="lazy"
+								/>
+							)
+						)}
+					</>
+				))
 			}
 		</div>
 	</div>

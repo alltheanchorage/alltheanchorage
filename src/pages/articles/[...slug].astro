@@ -2,9 +2,11 @@
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import AuthorName from '../../components/AuthorName.astro';
+import Headline from '../../components/Headline.astro';
 import Layout from '../../layouts/Layout.astro';
 import { authorPhoto } from '../../lib/authors';
 import { formatDate } from '../../lib/dates';
+import { headlineText } from '../../lib/headline';
 import { url } from '../../lib/paths';
 
 export async function getStaticPaths() {
@@ -22,7 +24,7 @@ const photo = author ? authorPhoto(author) : undefined;
 
 ---
 
-<Layout title={title} description={excerpt}>
+<Layout title={headlineText(article)} description={excerpt}>
 	<article class:list={['container', 'article-page', { advice, cartoon }]}>
 		<header class:list={['article-header', { 'cartoon-header': cartoon }]}>
 			{
@@ -31,7 +33,7 @@ const photo = author ? authorPhoto(author) : undefined;
 				)
 			}
 			{!cartoon && <p class="article-card-kicker">{category}</p>}
-			<h1 class={cartoon ? 'cartoon-caption' : 'article-title'}>{title}</h1>
+			<h1 class={cartoon ? 'cartoon-caption' : 'article-title'}><Headline article={article} /></h1>
 			{
 				author ? (
 					<div class="article-byline">

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { url } from '../lib/paths';
+import Headline from './Headline.astro';
 
 interface Props {
 	articles: CollectionEntry<'articles'>[];
@@ -27,7 +28,7 @@ const { articles } = Astro.props;
 									height={128}
 								/>
 							)}
-							<span class="most-read-headline">{article.data.title}</span>
+							<span class="most-read-headline"><Headline article={article} /></span>
 						</a>
 					</li>
 				))}

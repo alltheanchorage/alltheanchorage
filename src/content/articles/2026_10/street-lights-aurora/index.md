@@ -6,7 +6,7 @@ author: Lysander Lynx
 image: ./cover.png
 imageAlt: The aurora with a street light in the foreground.
 imageCaption: The aurora is the street light of the sky.
-order: 6
+order: 5
 guest: true
 main: true
 ---

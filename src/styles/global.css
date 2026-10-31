@@ -573,6 +573,17 @@ img {
 	margin: 2rem 0 3rem;
 }
 
+/* Role labels above each group of portraits. */
+.staff-role {
+	font-size: clamp(1.5rem, 3vw, 2rem);
+	color: var(--color-author);
+	margin: 1rem 0 -0.75rem;
+}
+
+.staff-role:first-child {
+	margin-top: 0;
+}
+
 /* The blue ring matches the author name color used on author pages. */
 .staff-photo {
 	display: block;
@@ -665,6 +676,11 @@ img {
 	color: var(--color-accent);
 }
 
+/* Cartoon captions wherever they're listed (cards, Most Read, ticker). */
+.cartoon-title {
+	font-style: italic;
+}
+
 /* ---------- Home lead: top article + Most Read box ---------- */
 
 /* The lead row carries the dividing line the top article would otherwise have. */
@@ -687,6 +703,12 @@ img {
 
 	.home-lead.with-most-read .most-read {
 		margin-top: 2rem;
+	}
+
+	/* The row already pads above its dividing line, so the hero beside the box
+		doesn't add its own on top of it. */
+	.home-lead.with-most-read .featured-article {
+		padding-bottom: 0;
 	}
 }
 
@@ -768,6 +790,15 @@ img {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	max-width: 590px;
+	margin: 0 auto;
+}
+
+/* The byline keeps the regular article look, lined up with the picture's left edge. */
+.cartoon-header .article-byline,
+.cartoon-header .article-meta {
+	align-self: flex-start;
+	text-align: left;
 }
 
 .cartoon-image {

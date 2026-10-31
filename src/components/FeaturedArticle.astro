@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import AuthorName from './AuthorName.astro';
+import Headline from './Headline.astro';
 import { formatDate } from '../lib/dates';
 import { url } from '../lib/paths';
 
@@ -27,7 +28,7 @@ const href = url(`/articles/${article.id}/`);
 	}
 	{
 		cartoon ? (
-			<h2 class="cartoon-caption"><a href={href}>{title}</a></h2>
+			<h2 class="cartoon-caption"><a href={href}><Headline article={article} /></a></h2>
 		) : (
 			<p class="article-card-kicker">{category}</p>
 		)

@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { headlineText } from '../lib/headline';
+
+interface Props {
+	article: CollectionEntry<'articles'>;
+}
+
+/** An article's headline text; cartoon captions come out quoted and in italics. */
+const { article } = Astro.props;
+const text = headlineText(article);
+---
+
+{article.data.cartoon ? <em class="cartoon-title">{text}</em> : text}

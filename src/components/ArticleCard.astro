@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import AuthorName from './AuthorName.astro';
+import Headline from './Headline.astro';
 import { formatDate } from '../lib/dates';
 import { makeExcerpt } from '../lib/excerpt';
 import { url } from '../lib/paths';
@@ -28,7 +29,7 @@ const excerptText = makeExcerpt(article.body, excerpt);
 	}
 	<div class="article-card-body">
 		{!cartoon && <p class="article-card-kicker">{category}</p>}
-		<h2 class="article-card-title"><a href={href}>{title}</a></h2>
+		<h2 class="article-card-title"><a href={href}><Headline article={article} /></a></h2>
 		{excerptText && <p class="article-card-excerpt">{excerptText}</p>}
 		<p class="article-card-meta">
 			{author && <AuthorName name={author} />}
