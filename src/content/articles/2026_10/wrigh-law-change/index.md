@@ -6,7 +6,7 @@ author: Lysander Lynx
 image: ./cover.png
 imageAlt: Bill Hill mirrored across the page, one with a fake mustache.
 imageCaption: The challenger is worried that neither 'Bill' nor 'Hill' sounds congressional enough.
-order: 11
+order: 12
 guest: true
 ---
 
