@@ -1,7 +1,7 @@
 ---
 title: What Does Our Halloween Costume Say About Our Relationship?
 date: 2026-10-31
-category: Advice
+category: Calling Nome For Advice
 author: Celia Lion
 image: ./cover.png
 imageAlt: C-3PO and Spider-Man at a Halloween party, arms interlocked.
