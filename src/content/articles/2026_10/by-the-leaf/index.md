@@ -6,4 +6,5 @@ imageAlt: Two people watch from a window as a man uses a leaf blower to blow lea
 order: 7
 cartoon: true
 author: Celia Lion
+guest: true
 ---

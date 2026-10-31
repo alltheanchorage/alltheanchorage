@@ -796,11 +796,14 @@ img {
 	margin: 0 auto;
 }
 
-/* The byline block is centered under the caption but keeps the regular
-	article layout inside it (photo beside left-aligned name and date). */
+/* The byline sits above the picture, lined up with its left edge, and keeps
+	the regular article layout (photo beside left-aligned name and date). */
 .cartoon-header .article-byline,
 .cartoon-header .article-meta {
+	order: -1;
+	align-self: flex-start;
 	text-align: left;
+	margin-bottom: 1rem;
 }
 
 .cartoon-image {
