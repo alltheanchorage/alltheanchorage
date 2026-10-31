@@ -10,12 +10,12 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, author, category, advice } = article.data;
+const { title, date, image, imageAlt, author, category, advice, cartoon } = article.data;
 const href = url(`/articles/${article.id}/`);
 ---
 
-<div class:list={['featured-article', { advice }]}>
-	<h2 class="featured-article-title"><a href={href}>{title}</a></h2>
+<div class:list={['featured-article', { advice, cartoon }]}>
+	{!cartoon && <h2 class="featured-article-title"><a href={href}>{title}</a></h2>}
 	{
 		image && (
 			<div class="featured-article-image">
@@ -25,10 +25,16 @@ const href = url(`/articles/${article.id}/`);
 			</div>
 		)
 	}
-	<p class="article-card-kicker">{category}</p>
+	{
+		cartoon ? (
+			<h2 class="cartoon-caption"><a href={href}>{title}</a></h2>
+		) : (
+			<p class="article-card-kicker">{category}</p>
+		)
+	}
 	<p class="article-card-meta">
+		{author && <AuthorName name={author} />}
+		{author && ' · '}
 		{formatDate(date)}
-		{author && <> · <AuthorName name={author} /></>}
-		{' · '}<a class="read-more" href={href}>Read more →</a>
 	</p>
 </div>

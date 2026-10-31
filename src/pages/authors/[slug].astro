@@ -1,8 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Layout from '../../layouts/Layout.astro';
-import { AUTHORS_WITH_PAGES, authorSlug } from '../../lib/authors';
+import { AUTHORS_WITH_PAGES, authorPhoto, authorSlug } from '../../lib/authors';
 import { sortArticlesForDisplay } from '../../lib/sortArticles';
 
 export function getStaticPaths() {
@@ -10,6 +11,7 @@ export function getStaticPaths() {
 }
 
 const { name } = Astro.props;
+const photo = authorPhoto(name);
 const articles = sortArticlesForDisplay(
 	await getCollection('articles', ({ data }) => !data.draft && data.author === name),
 );
@@ -18,7 +20,10 @@ const articles = sortArticlesForDisplay(
 <Layout title={`Articles by ${name}`}>
 	<div class="container">
 		<header class="archive-header">
-			<h1 class="archive-title">Articles by <span class="author-page-name">{name}</span></h1>
+			<h1 class="archive-title author-page-title">
+				<span class="author-page-heading">Articles by <span class="author-page-name">{name}</span></span>
+				{photo && <Image class="author-page-photo" src={photo} alt={`Photo of ${name}`} width={88} densities={[1, 2]} />}
+			</h1>
 		</header>
 		{
 			articles.length === 0 ? (

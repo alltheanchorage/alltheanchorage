@@ -1,12 +1,28 @@
 ---
-import { authorHref } from '../lib/authors';
+import { Image } from 'astro:assets';
+import { authorHref, authorPhoto } from '../lib/authors';
 
 interface Props {
 	name: string;
+	/** Omit the small inline photo (when a page renders its own bigger one). */
+	showPhoto?: boolean;
 }
 
-const { name } = Astro.props;
+const { name, showPhoto = true } = Astro.props;
 const href = authorHref(name);
+const photo = showPhoto ? authorPhoto(name) : undefined;
 ---
 
+{
+	photo && (
+		<Image
+			class="author-photo"
+			src={photo}
+			alt=""
+			width={48}
+			densities={[1, 2]}
+			loading="lazy"
+		/>
+	)
+}
 {href ? <a class="author author-link" href={href}>{name}</a> : <strong class="author">{name}</strong>}

@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import AuthorName from '../../components/AuthorName.astro';
 import Layout from '../../layouts/Layout.astro';
+import { authorPhoto } from '../../lib/authors';
 import { formatDate } from '../../lib/dates';
 import { url } from '../../lib/paths';
 
@@ -15,22 +16,49 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, imageCaption, author, excerpt, category, advice, guest } = article.data;
+const { title, date, image, imageAlt, imageCaption, author, excerpt, category, advice, guest, cartoon } = article.data;
 const { Content } = await render(article);
+const photo = author ? authorPhoto(author) : undefined;
+
 ---
 
 <Layout title={title} description={excerpt}>
-	<article class:list={['container', 'article-page', { advice }]}>
-		<header class="article-header">
-			<p class="article-card-kicker">{category}</p>
-			<h1 class="article-title">{title}</h1>
-			<p class="article-meta">
-				{formatDate(date)}
-				{author && <> · <AuthorName name={author} /></>}
-			</p>
+	<article class:list={['container', 'article-page', { advice, cartoon }]}>
+		<header class:list={['article-header', { 'cartoon-header': cartoon }]}>
+			{
+				cartoon && image && (
+					<Image class="cartoon-image" src={image} alt={imageAlt ?? title} width={1200} loading="eager" />
+				)
+			}
+			{!cartoon && <p class="article-card-kicker">{category}</p>}
+			<h1 class={cartoon ? 'cartoon-caption' : 'article-title'}>{title}</h1>
+			{
+				author ? (
+					<div class="article-byline">
+						{photo && (
+							<Image
+								class="byline-photo"
+								src={photo}
+								alt={`Photo of ${author}`}
+								width={56}
+								densities={[1, 2]}
+								loading="eager"
+							/>
+						)}
+						<span class="byline-lines">
+							<span class="byline-author">
+								<AuthorName name={author} showPhoto={false} />
+							</span>
+							<span class="byline-date">{formatDate(date)}</span>
+						</span>
+					</div>
+				) : (
+					<p class="article-meta">{formatDate(date)}</p>
+				)
+			}
 		</header>
 		{
-			image && (
+			!cartoon && image && (
 				<figure class="article-figure">
 					<Image src={image} alt={imageAlt ?? title} width={1200} />
 					{imageCaption && <figcaption>{imageCaption}</figcaption>}

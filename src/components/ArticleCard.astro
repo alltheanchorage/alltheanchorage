@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, date, image, imageAlt, excerpt, author, category, advice } = article.data;
+const { title, date, image, imageAlt, excerpt, author, category, advice, cartoon } = article.data;
 const href = url(`/articles/${article.id}/`);
 const excerptText = makeExcerpt(article.body, excerpt);
 ---
@@ -27,13 +27,13 @@ const excerptText = makeExcerpt(article.body, excerpt);
 		)
 	}
 	<div class="article-card-body">
-		<p class="article-card-kicker">{category}</p>
+		{!cartoon && <p class="article-card-kicker">{category}</p>}
 		<h2 class="article-card-title"><a href={href}>{title}</a></h2>
 		{excerptText && <p class="article-card-excerpt">{excerptText}</p>}
 		<p class="article-card-meta">
+			{author && <AuthorName name={author} />}
+			{author && ' · '}
 			{formatDate(date)}
-			{author && <> · <AuthorName name={author} /></>}
-			{' · '}<a class="read-more" href={href}>Read more →</a>
 		</p>
 	</div>
 </li>

@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { AUTHORS_WITH_PORTRAITS, authorFullPhoto, authorHref } from '../lib/authors';
+
+/** Staff with an original hand-drawn portrait; authors without one don't appear.
+	Photos of authors with their own page link to it. */
+const staff = AUTHORS_WITH_PORTRAITS.map((name) => ({
+	name,
+	photo: authorFullPhoto(name),
+	href: authorHref(name),
+})).filter((entry) => entry.photo);
+---
+
+<Layout title="Staff" description="Hand-drawn portraits of the staff of All The Anchorage.">
+	<div class="container">
+		<div class="staff-grid">
+			{
+				staff.map(({ name, photo, href }) =>
+					href ? (
+						<a class="staff-link" href={href}>
+							<Image
+								class="staff-photo"
+								src={photo}
+								alt={`Hand-drawn portrait of ${name}`}
+								width={640}
+								densities={[1, 2]}
+								loading="lazy"
+							/>
+						</a>
+					) : (
+						<Image
+							class="staff-photo"
+							src={photo}
+							alt={`Hand-drawn portrait of ${name}`}
+							width={640}
+							densities={[1, 2]}
+							loading="lazy"
+						/>
+					)
+				)
+			}
+		</div>
+	</div>
+</Layout>

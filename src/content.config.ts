@@ -51,6 +51,10 @@ const articles = defineCollection({
 			advice: z.boolean().default(false),
 			// Set true to add an outside-contributor note at the bottom of the article.
 			guest: z.boolean().default(false),
+			// Set true for a cartoon: the image gets the centered hero layout on the
+			// home page with the title shown below it as the caption, no category,
+			// and a blue frame. The article page is centered to match.
+			cartoon: z.boolean().default(false),
 		}),
 });
 
