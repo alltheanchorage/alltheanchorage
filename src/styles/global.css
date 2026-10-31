@@ -580,6 +580,18 @@ img {
 		white would vanish into the page. */
 	color: light-dark(var(--color-text), #fff);
 	margin: 1rem 0 -0.75rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+/* A short solid rule on each side of the role name. */
+.staff-role::before,
+.staff-role::after {
+	content: '';
+	width: 1.5em;
+	height: 2px;
+	background: currentColor;
 }
 
 .staff-role:first-child {
