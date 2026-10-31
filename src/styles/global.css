@@ -576,7 +576,9 @@ img {
 /* Role labels above each group of portraits. */
 .staff-role {
 	font-size: clamp(1.5rem, 3vw, 2rem);
-	color: var(--color-author);
+	/* White on the dark theme; regular text color on the light one, where
+		white would vanish into the page. */
+	color: light-dark(var(--color-text), #fff);
 	margin: 1rem 0 -0.75rem;
 }
 
@@ -794,10 +796,10 @@ img {
 	margin: 0 auto;
 }
 
-/* The byline keeps the regular article look, lined up with the picture's left edge. */
+/* The byline block is centered under the caption but keeps the regular
+	article layout inside it (photo beside left-aligned name and date). */
 .cartoon-header .article-byline,
 .cartoon-header .article-meta {
-	align-self: flex-start;
 	text-align: left;
 }
 

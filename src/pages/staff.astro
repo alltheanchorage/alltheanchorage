@@ -5,9 +5,9 @@ import { AUTHORS_WITH_PORTRAITS, authorFullPhoto, authorHref } from '../lib/auth
 
 /** Role groups, in page order. Anyone with a portrait who isn't named here is a columnist. */
 const ROLES: { role: string; names?: string[] }[] = [
-	{ role: 'Editor', names: ['Steve Marten'] },
-	{ role: 'Contributors', names: ['Celia Lion', 'Lysander Lynx'] },
-	{ role: 'Columnists' },
+	{ role: '--- Editor-In-Chief ---', names: ['Steve Marten'] },
+	{ role: '--- Contributors ---', names: ['Celia Lion', 'Lysander Lynx'] },
+	{ role: '--- Columnists ---' },
 ];
 const named = new Set(ROLES.flatMap(({ names }) => names ?? []));
 
